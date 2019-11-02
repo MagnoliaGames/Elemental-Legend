@@ -11,6 +11,7 @@
 
 ## Unity Version
 _2019.2.7f2_
+https://unity3d.com/es/unity/whats-new/2019.2.7
 
 ## Programming Language
 _**C#**_
