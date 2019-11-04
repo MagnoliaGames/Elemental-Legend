@@ -24,7 +24,6 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        transform.position = new Vector3(0, transform.position.y, transform.position.z);
         m_Rigidbody.AddForce(gravity, ForceMode.Acceleration);
 
         if (Input.GetKey(KeyCode.D))
@@ -44,8 +43,7 @@ public class PlayerMovement : MonoBehaviour
     }
 
     private void Jump()
-    {
-        
+    {       
         if (IsGrounded)
         {
             jumps = 0;

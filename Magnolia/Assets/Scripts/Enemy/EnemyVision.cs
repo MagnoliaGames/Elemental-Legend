@@ -33,20 +33,29 @@ public class EnemyVision : MonoBehaviour
 
         float halfVisionAngle = visionAngle / 2;
 
-        Vector3 p1, p2;
+        Vector3 p1, p2, p3, p4;
 
         p1 = PointForAngle(halfVisionAngle+90, visionDistance);
         p2 = PointForAngle(-halfVisionAngle+90, visionDistance);
+        p3 = PointForAngle2(halfVisionAngle + 90, visionDistance);
+        p4 = PointForAngle2(-halfVisionAngle + 90, visionDistance);
 
         Gizmos.color = detected ? Color.green : Color.red;
         Gizmos.DrawLine(eyes.position, eyes.position + p1);
         Gizmos.DrawLine(eyes.position, eyes.position + p2);
+        Gizmos.DrawLine(eyes.position, eyes.position + p3);
+        Gizmos.DrawLine(eyes.position, eyes.position + p4);
 
-        Gizmos.DrawLine(eyes.position, eyes.position + eyes.forward * 4f);
+        Gizmos.color = detected ? Color.green : Color.blue;
+        Gizmos.DrawLine(eyes.position, eyes.position + eyes.forward * visionDistance);
     }
 
     Vector3 PointForAngle(float angle, float distance)
     {
         return eyes.TransformDirection(new Vector3(Mathf.Cos(angle * Mathf.Deg2Rad), 0, Mathf.Sin(angle * Mathf.Deg2Rad))) * distance;
+    }
+    Vector3 PointForAngle2(float angle, float distance)
+    {
+        return eyes.TransformDirection(new Vector3(0, Mathf.Cos(angle * Mathf.Deg2Rad), Mathf.Sin(angle * Mathf.Deg2Rad))) * distance;
     }
 }
