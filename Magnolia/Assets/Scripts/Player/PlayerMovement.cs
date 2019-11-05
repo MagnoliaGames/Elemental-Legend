@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
-{
+{  
     private Rigidbody m_Rigidbody;
     private Vector3 gravity;
     private int jumps;
@@ -28,13 +28,15 @@ public class PlayerMovement : MonoBehaviour
 
         if (Input.GetKey(KeyCode.D))
         {
-            transform.rotation = new Quaternion(0, 0, 0, 0);
+            transform.localScale = new Vector3(1, 1, 1);
+            //transform.localEulerAngles = new Vector3(0, 0, 0);
             transform.position += transform.forward * movementSpeed * Time.fixedDeltaTime;
         }
         if (Input.GetKey(KeyCode.A))
         {
-            transform.rotation = new Quaternion(0, 90, 0, 0);
-            transform.position += transform.forward * movementSpeed * Time.fixedDeltaTime;
+            transform.localScale = new Vector3(-1, 1, -1);
+            //transform.localEulerAngles = new Vector3(0, 180, 0);
+            transform.position += -transform.forward * movementSpeed * Time.fixedDeltaTime;
         }
         if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.W))
         {

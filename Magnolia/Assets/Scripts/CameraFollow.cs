@@ -6,31 +6,34 @@ public class CameraFollow : MonoBehaviour
 {
     private PlayerMovement playerMovement;
     public Transform target;
-    public float smoothSpeed = 5f;
+    public float smoothSpeed = 3f;
     public Vector3 offset;
 
     private void Awake()
     {
-        offset = new Vector3(15, 3.5f, 0);
         transform.position = target.position + offset;
     }
     private void Start()
     {
-        playerMovement = target.GetComponent<PlayerMovement>();
+        playerMovement = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
     }
     private void FixedUpdate()
     {
-        Vector3 desiredPosition = target.position + offset;
+        target.position = playerMovement.transform.position;
+        target.rotation = playerMovement.transform.rotation;
+
+        transform.LookAt(target);
+        Vector3 desiredPosition = target.TransformPoint(offset);
         Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed * Time.fixedDeltaTime);
         transform.position = smoothedPosition;
 
         if (playerMovement.IsGrounded == false)
         {
-            offset = new Vector3(20, 1, 0);
+            offset = new Vector3(15, 1.5f, 0);
         }
         else
         {
-            offset = new Vector3(15, 3.5f, 0);
+            offset = new Vector3(10, 1.5f, 0);
         }
     }
 }
