@@ -13,10 +13,12 @@ public class CameraFollow : MonoBehaviour
     {
         transform.position = target.position + offset;
     }
+
     private void Start()
     {
         playerMovement = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
     }
+
     private void FixedUpdate()
     {
         target.position = playerMovement.transform.position;
