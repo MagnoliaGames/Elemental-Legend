@@ -4,27 +4,26 @@ using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
 {
-    private Animation animationController;
+    private Animator animator;
+    public bool isAttacking;
 
     void Start()
     {
-        animationController = GetComponent<Animation>();
+        animator = GetComponent<Animator>();
     }
-
     void Update()
     {
         if (Input.GetMouseButtonDown(0))
         {
-            animationController.Play("Player_Attack");
+            animator.SetTrigger("Attack");
         }
-    }
-
-    public bool isAttacking()
-    {
-        if (animationController.Play("Player_Attack"))
+        if (animator.GetCurrentAnimatorStateInfo(0).IsName("PlayerAttack"))
         {
-            return true;
+            isAttacking = true;
         }
-        return false;
-    }
+        else
+        {
+            isAttacking = false;
+        }
+    }   
 }

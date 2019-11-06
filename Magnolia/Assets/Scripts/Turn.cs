@@ -32,7 +32,7 @@ public class Turn : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.name == "Player"  && other.GetType() == typeof(CapsuleCollider) && !hasCoroutineStarted)
+        if (other.CompareTag("Player")  && other.GetType() == typeof(CapsuleCollider) && !hasCoroutineStarted)
         {
             if (inverse)
             {
