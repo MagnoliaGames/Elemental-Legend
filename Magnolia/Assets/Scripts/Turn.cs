@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Turn : MonoBehaviour
 {
-    private bool hasCoroutineStarted;
     private GameObject mCamera;
 
     public bool inverse;
@@ -14,44 +13,46 @@ public class Turn : MonoBehaviour
 
     private void Start()
     {
-        mCamera = GameObject.Find("Main Camera");
+        mCamera = GameObject.Find("Main Camera");        
+             
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
-        if (hasCoroutineStarted)
-        {
-            StartCoroutine(NormalCamera());
-            hasCoroutineStarted = false;
-        }
-        else
-        {
-            mCamera.transform.SetParent(GameObject.Find("CameraTarget").transform);
-        }
+        
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player")  && other.GetType() == typeof(CapsuleCollider) && !hasCoroutineStarted)
+        if (other.CompareTag("Player")  && other.GetType() == typeof(CapsuleCollider))
         {
-            if (inverse)
-            {
-                other.transform.localEulerAngles = new Vector3(0, other.transform.localEulerAngles.y - degrees, 0);
-                inverse = !inverse;
-            }
-            else
+            StartCoroutine(NormalCamera());
+            if (inverse && other.transform.localScale.x > 0)
             {
                 other.transform.localEulerAngles = new Vector3(0, other.transform.localEulerAngles.y + degrees, 0);
-                inverse = !inverse;
             }
-            hasCoroutineStarted = true;
+            else if(!inverse && other.transform.localScale.x < 0)
+            {
+                other.transform.localEulerAngles = new Vector3(0, other.transform.localEulerAngles.y - degrees, 0);
+            }
+            else if(!inverse && other.transform.localScale.x > 0)
+            {
+                other.transform.localEulerAngles = new Vector3(0, other.transform.localEulerAngles.y + degrees, 0);
+            }
+            else if (inverse && other.transform.localScale.x < 0)
+            {
+                other.transform.localEulerAngles = new Vector3(0, other.transform.localEulerAngles.y - degrees, 0);
+            }
+            inverse = !inverse;
         }
     }
 
     IEnumerator NormalCamera()
     {
-        mCamera.transform.SetParent(null);      
-        yield return new WaitForSeconds(1f);
+        mCamera.transform.SetParent(null);
+        yield return new WaitForSeconds(0.1f);
+        mCamera.transform.SetParent(GameObject.Find("CameraTarget").transform);
+        StopCoroutine(NormalCamera());
     }
-   
+
 }
