@@ -13,7 +13,7 @@ public class PlayerMovement : MonoBehaviour
     public bool doubleJump;
     public float gravityForce = -9.81f;
     public float movementSpeed = 10;
-    public float jumpForce = 7;
+    public float jumpForce = 15;
 
     void Start()
     {
@@ -42,6 +42,11 @@ public class PlayerMovement : MonoBehaviour
         {
             Jump();
         }
+
+        //if (!IsGrounded && transform.position.y >5)
+        //{
+        //    m_Rigidbody.velocity = Vector3.up * -1;
+        //}
     }
 
     private void Jump()
@@ -52,7 +57,7 @@ public class PlayerMovement : MonoBehaviour
         }
         if (IsGrounded || (doubleJump && jumps < 2))
         {
-            m_Rigidbody.velocity = Vector3.up * jumpForce * Time.fixedDeltaTime;
+            m_Rigidbody.velocity = Vector3.up * jumpForce;
             jumps += 1;
             IsGrounded = false;
         }      
