@@ -4,20 +4,21 @@ using UnityEngine;
 
 public class Weapon : MonoBehaviour
 {
-    private PlayerAttack playerAttack;
+    private SwordAttack swordAttack;
 
     public int damage = 10;
 
     private void Start()
     {
-        playerAttack = GameObject.Find("Player").GetComponent<PlayerAttack>();
+        swordAttack = GetComponent<SwordAttack>();
     }
 
     private void OnTriggerEnter(Collider other)
     {
         
-        if (other.CompareTag("Enemy") && playerAttack.isAttacking)
+        if (other.CompareTag("Enemy") && swordAttack.isAttacking)
         {
+            Debug.Log("hit enemy");
             other.GetComponent<EnemyHealth>().health -= damage;
         }
     }

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerAttack : MonoBehaviour
+public class SwordAttack : MonoBehaviour
 {
     private Animator animator;
     public bool isAttacking;
@@ -13,11 +13,11 @@ public class PlayerAttack : MonoBehaviour
     }
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && isAttacking == false)
         {
             animator.SetTrigger("Attack");
         }
-        if (animator.GetCurrentAnimatorStateInfo(0).IsName("PlayerAttack"))
+        if (animator.GetCurrentAnimatorStateInfo(0).IsName("SwordAttack"))
         {
             isAttacking = true;
         }
