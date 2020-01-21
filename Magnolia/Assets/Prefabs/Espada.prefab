@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 8915418070714800909}
   - component: {fileID: 7387968599990513610}
   - component: {fileID: 8915418070714800908}
-  - component: {fileID: 8915418070714800915}
   - component: {fileID: 7771614778871464278}
   m_Layer: 0
   m_Name: Espada
@@ -68,19 +67,6 @@ CapsuleCollider:
   m_Height: 2.0281672
   m_Direction: 1
   m_Center: {x: 0, y: 1.5840838, z: 0}
---- !u!114 &8915418070714800915
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8915418070714800910}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bdf16467201adcf4f886db1575cd1dbe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 50
 --- !u!114 &7771614778871464278
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -94,6 +80,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isAttacking: 0
+  damage: 50
 --- !u!1001 &8915418070482713770
 PrefabInstance:
   m_ObjectHideFlags: 0

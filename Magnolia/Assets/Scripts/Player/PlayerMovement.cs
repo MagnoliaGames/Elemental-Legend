@@ -10,6 +10,7 @@ public class PlayerMovement : MonoBehaviour
 
     public bool IsGrounded { get; private set; }
 
+    public bool turned;
     public bool doubleJump;
     public float gravityForce = -9.81f;
     public float movementSpeed = 10;
@@ -28,14 +29,14 @@ public class PlayerMovement : MonoBehaviour
 
         if (Input.GetKey(KeyCode.D))
         {
+            turned = false;
             transform.localScale = new Vector3(1, 1, 1);
-            //transform.localEulerAngles = new Vector3(0, 0, 0);
             transform.position += transform.forward * movementSpeed * Time.fixedDeltaTime;
         }
         if (Input.GetKey(KeyCode.A))
         {
+            turned = true;
             transform.localScale = new Vector3(-1, 1, -1);
-            //transform.localEulerAngles = new Vector3(0, 180, 0);
             transform.position += -transform.forward * movementSpeed * Time.fixedDeltaTime;
         }
         if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.W))

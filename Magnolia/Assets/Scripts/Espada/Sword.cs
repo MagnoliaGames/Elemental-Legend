@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SwordAttack : MonoBehaviour
+public class Sword : MonoBehaviour
 {
     private Animator animator;
+
     public bool isAttacking;
+    public int damage = 10;
 
     void Start()
     {
@@ -25,5 +27,15 @@ public class SwordAttack : MonoBehaviour
         {
             isAttacking = false;
         }
-    }   
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+
+        if (other.CompareTag("Enemy") && isAttacking)
+        {
+            Debug.Log("hit enemy");
+            other.GetComponent<EnemyHealth>().health -= damage;
+        }
+    }
 }
