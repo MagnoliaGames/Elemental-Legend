@@ -23,17 +23,34 @@ public class Shotgun : MonoBehaviour
     void FixedUpdate()
     {
         target.transform.position = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, Camera.main.transform.localPosition.x));
-        transform.LookAt(target.transform.position);
 
-        if (playerMovement.turned == true && cont == 0)
+        //if (Input.mousePosition.x < 400 && Input.mousePosition.x > 150 && Input.mousePosition.y < 250 && Input.mousePosition.y > 100)
+        //{
+        //    Debug.Log("bug");
+        //    transform.LookAt(null);
+        //}
+        //else
+        //{       
+            transform.LookAt(target.transform);
+        //}
+
+        if (playerMovement.turned == true )
         {
-            transform.localScale = new Vector3(transform.localScale.x *-1, transform.localScale.y, transform.localScale.z * -1);
-            cont = 1;
+            //transform.localEulerAngles = new Vector3(transform.localEulerAngles.x, 180, 0);
+            if (cont == 0)
+            {
+                transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z * -1);
+                cont = 1;
+            }            
         }
-        if (playerMovement.turned == false && cont == 1)
+        if (playerMovement.turned == false )
         {
-            transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z * -1);
-            cont =  0;
+            //transform.localEulerAngles = new Vector3(transform.localEulerAngles.x, 0, 0);
+            if (cont == 1)
+            {
+                transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z * -1);
+                cont = 0;
+            }           
         }
 
 
