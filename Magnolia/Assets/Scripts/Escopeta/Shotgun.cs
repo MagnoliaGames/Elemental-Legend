@@ -7,6 +7,7 @@ public class Shotgun : MonoBehaviour
     private PlayerMovement playerMovement;
     private GameObject target;
     private int cont = 0;
+    float roty = 0;
 
     public Transform shot;
     public GameObject bullet;
@@ -17,6 +18,7 @@ public class Shotgun : MonoBehaviour
     {
         target = Instantiate(mira);
         playerMovement = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
+        target.transform.SetParent(playerMovement.transform);
     }
 
     // Update is called once per frame
@@ -25,23 +27,42 @@ public class Shotgun : MonoBehaviour
         target.transform.position = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, Camera.main.transform.localPosition.x));
         transform.LookAt(target.transform);
 
-        if (playerMovement.turned == true )
+        transform.eulerAngles = new Vector3(transform.eulerAngles.x, roty, transform.eulerAngles.z);
+
+        if (playerMovement.turned == false && target.transform.localPosition.z < 0)
         {
-            //transform.localEulerAngles = new Vector3(transform.localEulerAngles.x, 180, 0);
             if (cont == 0)
             {
-                transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z * -1);
+                playerMovement.transform.localScale = new Vector3(-1, 1, -1);
+                transform.localScale = new Vector3(3.4f, 3.4f, -3.4f);
+                roty = 180;
                 cont = 1;
-            }            
-        }
-        if (playerMovement.turned == false )
-        {
-            //transform.localEulerAngles = new Vector3(transform.localEulerAngles.x, 0, 0);
-            if (cont == 1)
+            }
+            else if (cont == 1)
             {
-                transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z * -1);
+                playerMovement.transform.localScale = new Vector3(1, 1, 1);
+                transform.localScale = new Vector3(3.4f, 3.4f, 3.4f);
+                roty = 0;
                 cont = 0;
-            }           
+            }
+
+        }
+        else if (playerMovement.turned == true && target.transform.localPosition.z < 0)
+        {
+            if (cont == 0)
+            {
+                playerMovement.transform.localScale = new Vector3(1, 1, 1);
+                transform.localScale = new Vector3(3.4f, 3.4f, 3.4f);
+                roty = 0;
+                cont = 1;
+            }
+            else if (cont == 1)
+            {
+                playerMovement.transform.localScale = new Vector3(-1, 1, -1);
+                transform.localScale = new Vector3(3.4f, 3.4f, -3.4f);
+                roty = 180;
+                cont = 0;
+            }
         }
 
 
