@@ -27,19 +27,20 @@ public class Turn : MonoBehaviour
         if (other.CompareTag("Player")  && other.GetType() == typeof(CapsuleCollider))
         {
             StartCoroutine(NormalCamera());
-            if (inverse && other.transform.localScale.x > 0)
+            var playerMovement = other.GetComponent<PlayerMovement>();
+            if (inverse && /*other.transform.localScale.x > 0*/ !playerMovement.turned)
             {
                 other.transform.localEulerAngles = new Vector3(0, other.transform.localEulerAngles.y + degrees, 0);
             }
-            else if(!inverse && other.transform.localScale.x < 0)
+            else if(!inverse && /*other.transform.localScale.x < 0*/ playerMovement.turned)
             {
                 other.transform.localEulerAngles = new Vector3(0, other.transform.localEulerAngles.y - degrees, 0);
             }
-            else if(!inverse && other.transform.localScale.x > 0)
+            else if(!inverse && /*other.transform.localScale.x > 0*/ !playerMovement.turned)
             {
                 other.transform.localEulerAngles = new Vector3(0, other.transform.localEulerAngles.y + degrees, 0);
             }
-            else if (inverse && other.transform.localScale.x < 0)
+            else if (inverse && /*other.transform.localScale.x < 0*/ playerMovement.turned)
             {
                 other.transform.localEulerAngles = new Vector3(0, other.transform.localEulerAngles.y - degrees, 0);
             }

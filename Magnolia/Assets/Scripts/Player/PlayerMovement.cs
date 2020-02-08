@@ -43,11 +43,6 @@ public class PlayerMovement : MonoBehaviour
         {
             Jump();
         }
-
-        //if (!IsGrounded && transform.position.y >5)
-        //{
-        //    m_Rigidbody.velocity = Vector3.up * -1;
-        //}
     }
 
     private void Jump()

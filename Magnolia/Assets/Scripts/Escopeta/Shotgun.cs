@@ -7,7 +7,7 @@ public class Shotgun : MonoBehaviour
     private PlayerMovement playerMovement;
     private GameObject target;
     private int cont = 0;
-    float roty = 0;
+    float roty;
 
     public Transform shot;
     public GameObject bullet;
@@ -27,7 +27,7 @@ public class Shotgun : MonoBehaviour
         target.transform.position = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, Camera.main.transform.localPosition.x));
         transform.LookAt(target.transform);
 
-        transform.eulerAngles = new Vector3(transform.eulerAngles.x, roty, transform.eulerAngles.z);
+        transform.localEulerAngles = new Vector3(transform.localEulerAngles.x, roty, transform.localEulerAngles.z);
 
         if (playerMovement.turned == false && target.transform.localPosition.z < 0)
         {
@@ -65,13 +65,10 @@ public class Shotgun : MonoBehaviour
             }
         }
 
-
         if (Input.GetMouseButtonDown(0))
         {
             Shoot();
-        }
-
-        
+        }   
     }
 
     void Shoot()
