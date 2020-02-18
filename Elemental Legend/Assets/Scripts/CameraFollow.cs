@@ -5,14 +5,16 @@ using UnityEngine;
 public class CameraFollow : MonoBehaviour
 {
     private PlayerMovement playerMovement;
+    private Vector3 generalOffset;
 
     public Transform target;
     public float smoothSpeed = 3f;
-    public Vector3 offset;
+    public Vector3 offsetGround, offsetJump;
 
     private void Awake()
     {
-        transform.position = target.position + offset;
+        generalOffset = offsetGround;
+        transform.position = target.position + generalOffset;
     }
 
     private void Start()
@@ -26,17 +28,17 @@ public class CameraFollow : MonoBehaviour
         target.rotation = playerMovement.transform.rotation;
 
         transform.LookAt(target);
-        Vector3 desiredPosition = target.TransformPoint(offset);
+        Vector3 desiredPosition = target.TransformPoint(generalOffset);
         Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed * Time.fixedDeltaTime);
         transform.position = smoothedPosition;
 
         if (playerMovement.IsGrounded == false)
         {
-            offset = new Vector3(15, 1.5f, 0);
+            generalOffset = offsetJump;
         }
         else
         {
-            offset = new Vector3(10, 1.5f, 0);
+            generalOffset = offsetGround;
         }
     }
 }

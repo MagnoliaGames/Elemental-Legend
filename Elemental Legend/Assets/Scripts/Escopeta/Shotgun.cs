@@ -27,7 +27,7 @@ public class Shotgun : MonoBehaviour
         target.transform.position = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, Camera.main.transform.localPosition.x));
         transform.LookAt(target.transform);
 
-        transform.localEulerAngles = new Vector3(transform.localEulerAngles.x, roty, transform.localEulerAngles.z);
+        transform.localEulerAngles = new Vector3(transform.localEulerAngles.x, roty - 3f, transform.localEulerAngles.z);
 
         if (playerMovement.turned == false && target.transform.localPosition.z < 0)
         {

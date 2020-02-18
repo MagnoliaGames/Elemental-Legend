@@ -6,7 +6,7 @@ using System.Data;
 
 public class DataBase
 {
-    private static string conn = "URI=file:" + Application.dataPath + "/DataBase/Magnolia.s3db";
+    private static string conn = "URI=file:" + Application.dataPath + "/DataBase/ElementalLegend.s3db";
 
     public static int GetDinero(int id)
     {
