@@ -64,6 +64,6 @@ public class PlayerMovement : MonoBehaviour
         if (collision.gameObject.CompareTag("Piso"))
         {
             IsGrounded = true;
-        }
+        }    
     }
 }

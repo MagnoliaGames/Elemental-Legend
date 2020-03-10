@@ -5,7 +5,7 @@ using UnityEngine;
 public class CameraFollow : MonoBehaviour
 {
     private PlayerMovement playerMovement;
-    private Vector3 generalOffset;
+    public Vector3 generalOffset { get; private set; }
 
     public Transform target;
     public float smoothSpeed = 3f;

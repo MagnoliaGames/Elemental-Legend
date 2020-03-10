@@ -5,6 +5,7 @@ using UnityEngine;
 public class Shotgun : MonoBehaviour
 {
     private PlayerMovement playerMovement;
+    private CameraFollow cameraFollow;
     private GameObject target;
     private int cont = 0;
     float roty;
@@ -18,13 +19,15 @@ public class Shotgun : MonoBehaviour
     {
         target = Instantiate(mira);
         playerMovement = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
+        cameraFollow  = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraFollow>();
         target.transform.SetParent(playerMovement.transform);
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        target.transform.position = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, Camera.main.transform.localPosition.x));
+        target.transform.position = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, cameraFollow.generalOffset.x));
+
         transform.LookAt(target.transform);
 
         transform.localEulerAngles = new Vector3(transform.localEulerAngles.x, roty - 3f, transform.localEulerAngles.z);
