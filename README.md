@@ -4,6 +4,7 @@
 - Emilio Santillana
 - Armando Dominguez
 - Gerardo Aragon
+- Sebastian Nieto
 
 ## Game Engine
 [_**Unity Engine**_](https://unity.com/es)
