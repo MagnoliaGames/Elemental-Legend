@@ -1,5 +1,5 @@
 # Elemental Legend
-**Elemental Legend** is an _Action, Plataformer and Run&Gun_ game in 2.5D progress developed by 3 mexicans students from UVM campus Puebla:
+**Elemental Legend** is an _Action, Plataformer and Run&Gun_ game in 2.5D progress developed by 4 mexicans students from UVM campus Puebla:
 
 - Emilio Santillana
 - Armando Dominguez
