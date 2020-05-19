@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    private GameObject erickChild;
+    private GameObject erickChild, erickParent;
     private Rigidbody m_Rigidbody;
     private Vector3 gravity;
     private CameraFollow cameraFollow;
@@ -14,7 +14,7 @@ public class PlayerMovement : MonoBehaviour
 
     public bool IsGrounded { get; private set; }
 
-    public bool turned;
+    public bool turned, frente;
     public bool doubleJump;
     public float gravityForce = -9.81f;
     public float movementSpeed = 10;
@@ -23,6 +23,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Start()
     {
+        erickParent = GameObject.Find("Erick Parent");
         erickChild = GameObject.Find("Erick Child");
         m_Rigidbody = GetComponent<Rigidbody>();
         gravity = new Vector3(0, gravityForce, 0);
@@ -39,18 +40,31 @@ public class PlayerMovement : MonoBehaviour
         }
 
         mouse.position = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, cameraFollow.generalOffset.x));
-
         m_Rigidbody.AddForce(gravity, ForceMode.Acceleration);
 
         if (Input.GetKey(KeyCode.D))
         {
-            //turned = false;
-            transform.position += transform.forward * movementSpeed * Time.fixedDeltaTime;
+            frente = true;
+            if (turned)
+            {
+                erickParent.transform.position += -transform.forward * movementSpeed * Time.fixedDeltaTime;
+            }
+            else
+            {
+                erickParent.transform.position += transform.forward * movementSpeed * Time.fixedDeltaTime;
+            }           
         }
         if (Input.GetKey(KeyCode.A))
         {
-            //turned = true;
-            transform.position += -transform.forward * movementSpeed * Time.fixedDeltaTime;
+            frente = false;
+            if (turned)
+            {
+                erickParent.transform.position += transform.forward * movementSpeed * Time.fixedDeltaTime;
+            }
+            else
+            {
+                erickParent.transform.position += -transform.forward * movementSpeed * Time.fixedDeltaTime;
+            }
         }
         if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.W))
         {
@@ -73,13 +87,13 @@ public class PlayerMovement : MonoBehaviour
     {
         if (mouse.localPosition.z < 0 && !turned)
         {
-            erickChild.transform.localEulerAngles = new Vector3(erickChild.transform.localEulerAngles.x, erickChild.transform.localEulerAngles.y + 180, erickChild.transform.localEulerAngles.z);
+            transform.localEulerAngles = new Vector3(transform.localEulerAngles.x, transform.localEulerAngles.y + 180, transform.localEulerAngles.z);
             turned = true;
         }
         else if (mouse.localPosition.z < 0 && turned)
         {
             turned = false;
-            erickChild.transform.localEulerAngles = new Vector3(erickChild.transform.localEulerAngles.x, erickChild.transform.localEulerAngles.y + 180, erickChild.transform.localEulerAngles.z);
+            transform.localEulerAngles = new Vector3(transform.localEulerAngles.x, transform.localEulerAngles.y + 180, transform.localEulerAngles.z);
         }
 
         //if (turned == false && mouse.localPosition.z < 0)

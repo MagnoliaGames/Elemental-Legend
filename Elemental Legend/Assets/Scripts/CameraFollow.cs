@@ -26,7 +26,7 @@ public class CameraFollow : MonoBehaviour
     private void FixedUpdate()
     {
         target.position = playerMovement.transform.position;
-        target.rotation = playerMovement.transform.rotation;
+        target.rotation = GameObject.Find("Erick Parent").transform.rotation;
 
         transform.LookAt(target);
         Vector3 desiredPosition = target.TransformPoint(generalOffset);

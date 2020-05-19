@@ -28,21 +28,21 @@ public class Turn : MonoBehaviour
         {
             StartCoroutine(NormalCamera());
             var playerMovement = other.GetComponent<PlayerMovement>();
-            if (inverse && /*other.transform.localScale.x > 0*/ !playerMovement.turned)
-            {
-                other.transform.localEulerAngles = new Vector3(0, other.transform.localEulerAngles.y + degrees, 0);
+            if (inverse && playerMovement.frente )
+            {               
+                GameObject.Find("Erick Parent").transform.localEulerAngles = new Vector3(0, GameObject.Find("Erick Parent").transform.localEulerAngles.y + degrees, 0);
             }
-            else if(!inverse && /*other.transform.localScale.x < 0*/ playerMovement.turned)
-            {
-                other.transform.localEulerAngles = new Vector3(0, other.transform.localEulerAngles.y - degrees, 0);
+            else if(!inverse && !playerMovement.frente)
+            {             
+                GameObject.Find("Erick Parent").transform.localEulerAngles = new Vector3(0, GameObject.Find("Erick Parent").transform.localEulerAngles.y - degrees, 0);
             }
-            else if(!inverse && /*other.transform.localScale.x > 0*/ !playerMovement.turned)
-            {
-                other.transform.localEulerAngles = new Vector3(0, other.transform.localEulerAngles.y + degrees, 0);
+            else if(!inverse && playerMovement.frente)
+            {               
+                GameObject.Find("Erick Parent").transform.localEulerAngles = new Vector3(0, GameObject.Find("Erick Parent").transform.localEulerAngles.y + degrees, 0);
             }
-            else if (inverse && /*other.transform.localScale.x < 0*/ playerMovement.turned)
-            {
-                other.transform.localEulerAngles = new Vector3(0, other.transform.localEulerAngles.y - degrees, 0);
+            else if (inverse && !playerMovement.frente)
+            {               
+                GameObject.Find("Erick Parent").transform.localEulerAngles = new Vector3(0, GameObject.Find("Erick Parent").transform.localEulerAngles.y - degrees, 0);
             }
             inverse = !inverse;
         }
