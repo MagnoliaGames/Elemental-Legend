@@ -5,6 +5,7 @@ using UnityEngine;
 public class CameraFollow : MonoBehaviour
 {
     private PlayerMovement playerMovement;
+    
     public Vector3 generalOffset { get; private set; }
 
     public Transform target;
