@@ -8,7 +8,7 @@ ModelImporter:
     second: Idle
   - first:
       74: -5405653242291790180
-    second: Run
+    second: Walk
   externalObjects:
   - first:
       type: UnityEngine:Material
@@ -83,7 +83,7 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0.96
     - serializedVersion: 16
-      name: Run
+      name: Walk
       takeName: Take 001
       internalID: 0
       firstFrame: 41
