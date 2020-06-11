@@ -5867,6 +5867,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: FPSController
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
       propertyPath: m_LocalPosition.x
       value: 24.82
@@ -11636,7 +11640,7 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: 27fc859aa0ef2874e9fb03f79663abd9,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 27fc859aa0ef2874e9fb03f79663abd9,
         type: 3}
@@ -24405,6 +24409,11 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 5f907784aad3e8d43bc96d9f51042e44, type: 2}
+    - target: {fileID: 3166129442866028725, guid: e9f718764b7355f41a18fa36e99df0df,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.96
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e9f718764b7355f41a18fa36e99df0df, type: 3}
 --- !u!1 &1926143171 stripped
