@@ -34,6 +34,7 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
+        animator.SetBool("walk", false);
         if (gun == null)
         {
             gun = GetComponentInChildren<Gun>();
@@ -44,30 +45,36 @@ public class PlayerMovement : MonoBehaviour
 
         if (Input.GetKey(KeyCode.D))
         {
+            animator.SetBool("walk", true);            
             frente = true;
             if (turned)
             {
                 erickParent.transform.position += -transform.forward * movementSpeed * Time.fixedDeltaTime;
+                animator.SetFloat("front", -1);
             }
             else
             {
                 erickParent.transform.position += transform.forward * movementSpeed * Time.fixedDeltaTime;
+                animator.SetFloat("front", 1);
             }           
         }
         if (Input.GetKey(KeyCode.A))
         {
+            animator.SetBool("walk", true);
             frente = false;
             if (turned)
             {
                 erickParent.transform.position += transform.forward * movementSpeed * Time.fixedDeltaTime;
+                animator.SetFloat("front", 1);
             }
             else
             {
                 erickParent.transform.position += -transform.forward * movementSpeed * Time.fixedDeltaTime;
+                animator.SetFloat("front", -1);
             }
         }
         if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.W))
-        {
+        {         
             Jump();
         }
 
@@ -81,6 +88,9 @@ public class PlayerMovement : MonoBehaviour
 
         animator.SetIKPosition(AvatarIKGoal.RightHand, ikRight.position);
         animator.SetIKPosition(AvatarIKGoal.LeftHand, ikLeft.position);
+
+        animator.SetLookAtWeight(1);
+        animator.SetLookAtPosition(mouse.position);
     }
 
     private void LookMouse()
@@ -134,9 +144,10 @@ public class PlayerMovement : MonoBehaviour
     }
 
     private void Jump()
-    {       
+    {
+        animator.SetBool("jump", true);
         if (IsGrounded)
-        {
+        {           
             jumps = 0;
         }
         if (IsGrounded || (doubleJump && jumps < 2))
@@ -151,6 +162,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Piso"))
         {
+            animator.SetBool("jump", false);
             IsGrounded = true;
         }    
     }
