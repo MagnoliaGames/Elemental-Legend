@@ -16,21 +16,18 @@ public class Bullet : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-
-        normalization = Mathf.Sqrt(Mathf.Pow(direction.x, 2) + Mathf.Pow(direction.y, 2));
-        normalizedOrientation = new Vector3(direction.x / normalization, direction.y / normalization);
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        rb.velocity = new Vector3(transform.forward.x, transform.forward.y * normalizedOrientation.x, transform.forward.z) * speed;
+        rb.velocity = new Vector3(transform.forward.x, transform.forward.y, transform.forward.z) * speed;
         StartCoroutine(DestroyBullet());
     }
 
     IEnumerator DestroyBullet()
     {
-        yield return new WaitForSeconds(0.3f);
+        yield return new WaitForSeconds(3f);
         Destroy(gameObject);
     }
 

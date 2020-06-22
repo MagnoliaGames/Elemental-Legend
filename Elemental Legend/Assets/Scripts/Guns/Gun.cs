@@ -6,7 +6,6 @@ public class Gun : MonoBehaviour
 {
     private PlayerMovement playerMovement;
 
-    public float roty;
     public Transform shot;
 
     // Start is called before the first frame update
@@ -19,6 +18,6 @@ public class Gun : MonoBehaviour
     public void Look()
     {
         transform.LookAt(playerMovement.mouse);
-        transform.localEulerAngles = new Vector3(transform.localEulerAngles.x, roty - 3f, transform.localEulerAngles.z);      
+        transform.localEulerAngles = new Vector3(transform.localEulerAngles.x, - 3f, transform.localEulerAngles.z);      
     }
 }
