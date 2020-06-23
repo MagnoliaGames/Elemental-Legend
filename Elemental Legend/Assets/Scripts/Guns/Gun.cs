@@ -18,6 +18,6 @@ public class Gun : MonoBehaviour
     public void Look()
     {
         transform.LookAt(playerMovement.mouse);
-        transform.localEulerAngles = new Vector3(transform.localEulerAngles.x, - 3f, transform.localEulerAngles.z);      
+        transform.localEulerAngles = new Vector3(transform.localEulerAngles.x, 0, transform.localEulerAngles.z);      
     }
 }

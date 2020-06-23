@@ -193,7 +193,7 @@ MonoBehaviour:
   frente: 0
   doubleJump: 1
   gravityForce: -9.81
-  movementSpeed: 10
+  movementSpeed: 5
   jumpForce: 10
   mouse: {fileID: 74167457301902985}
   ikRight: {fileID: 74167457548804397}

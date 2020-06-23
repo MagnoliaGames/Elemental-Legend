@@ -7,8 +7,10 @@ public class Bullet : MonoBehaviour
     private float normalization;
     private Vector3 normalizedOrientation;
     private Rigidbody rb;
+    private ParticleSystem psExplode, psProjectile;
 
     public Vector3 direction;
+    public GameObject explode, projectile;
     public float speed;
     public int damage = 10;
 
@@ -16,6 +18,8 @@ public class Bullet : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        psExplode = explode.GetComponent<ParticleSystem>();
+        psProjectile = projectile.GetComponent<ParticleSystem>();
     }
 
     // Update is called once per frame
@@ -33,15 +37,26 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Enemy"))
+        if (other.CompareTag("Turn") || other.CompareTag("Player") || other.CompareTag("Bullet"))
         {
-            Debug.Log("hit enemy");
-            other.GetComponent<EnemyHealth>().health -= damage;
-            Destroy(gameObject);
+
         }
-        if (other.CompareTag("Piso"))
+        else
         {
-            Destroy(gameObject);
-        }
+            speed = 0;
+            psProjectile.Stop();
+            psExplode.Play();
+            StartCoroutine(DestroyBullet());
+            if (other.CompareTag("Enemy"))
+            {
+                Debug.Log("hit enemy");
+                other.GetComponent<EnemyHealth>().health -= damage;
+            }
+        }      
+        //if (other.CompareTag("Piso"))
+        //{
+        //    ps.Play();
+        //    StartCoroutine(DestroyBullet());
+        //}
     }
 }
