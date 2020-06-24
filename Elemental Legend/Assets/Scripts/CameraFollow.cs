@@ -10,7 +10,7 @@ public class CameraFollow : MonoBehaviour
 
     public Transform target;
     public float smoothSpeed = 3f;
-    public Vector3 offsetGround, offsetJump;
+    public Vector3 offsetGround, offsetJump, cameraOffset;
 
     private void Awake()
     {
@@ -25,7 +25,7 @@ public class CameraFollow : MonoBehaviour
 
     private void FixedUpdate()
     {
-        target.position = playerMovement.transform.position;
+        target.position = playerMovement.transform.position + cameraOffset;
         target.rotation = GameObject.Find("Erick Parent").transform.rotation;
 
         transform.LookAt(target);

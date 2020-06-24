@@ -85,9 +85,13 @@ public class PlayerMovement : MonoBehaviour
     {
         animator.SetIKPositionWeight(AvatarIKGoal.RightHand, 1);
         animator.SetIKPositionWeight(AvatarIKGoal.LeftHand, 1);
+        animator.SetIKRotationWeight(AvatarIKGoal.RightHand, 1);
+        animator.SetIKRotationWeight(AvatarIKGoal.LeftHand, 1);
 
         animator.SetIKPosition(AvatarIKGoal.RightHand, ikRight.position);
         animator.SetIKPosition(AvatarIKGoal.LeftHand, ikLeft.position);
+        animator.SetIKRotation(AvatarIKGoal.RightHand, ikRight.rotation);
+        animator.SetIKRotation(AvatarIKGoal.LeftHand, ikLeft.rotation);
 
         animator.SetLookAtWeight(1);
         animator.SetLookAtPosition(mouse.position);
