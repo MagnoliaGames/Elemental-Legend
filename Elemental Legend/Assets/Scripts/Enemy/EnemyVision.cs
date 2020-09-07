@@ -4,14 +4,19 @@ using UnityEngine;
 
 public class EnemyVision : MonoBehaviour
 {
-    public Transform player;
     public Transform eyes;
 
     [Range(0f, 360f)]
     public float visionAngle = 60f;
     public float visionDistance = 10f;
+    public bool detected;
 
-    bool detected = false;
+    private Transform player;
+
+    private void Start()
+    {
+        player = GameObject.FindGameObjectWithTag("Player").transform;
+    }
 
     private void Update()
     {

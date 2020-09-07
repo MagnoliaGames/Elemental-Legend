@@ -7,6 +7,7 @@ public class EnemyHealth : MonoBehaviour
     private Animator animator;
 
     public int health = 100;
+    public bool muerto = false;
     public GameObject[] drops;
 
    private void Start()
@@ -18,14 +19,12 @@ public class EnemyHealth : MonoBehaviour
     {
         if (health <= 0)
         {
+            muerto = true;
             animator.SetBool("Muerto", true);
-            Debug.Log(animator.GetCurrentAnimatorStateInfo(0).IsName("Muerte"));
-            if (animator.GetCurrentAnimatorStateInfo(0).IsName("Muerte"))
-            {
-                Destroy(GetComponent<Rigidbody>());
-                Destroy(GetComponent<CapsuleCollider>());
-                StartCoroutine(Destroy());
-            }       
+            Destroy(GetComponentInChildren<GunEnemy>().gameObject);
+            Destroy(GetComponent<Rigidbody>());
+            Destroy(GetComponent<CapsuleCollider>());
+            StartCoroutine(Destroy());      
         }
     }
 
