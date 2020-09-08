@@ -138,7 +138,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shot: {fileID: 5571117591436200693}
-  bullet: {fileID: 3899254592387915601, guid: 47ee59671699c004d8736afde9114042, type: 3}
+  bullet: {fileID: 567964562728328108, guid: 679455dbccd89ad48957f9a898e858eb, type: 3}
+  time: 3
+  canShoot: 1
 --- !u!1 &6596258315458035633
 GameObject:
   m_ObjectHideFlags: 0

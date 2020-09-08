@@ -2170,6 +2170,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ikRight: {fileID: 7962101631319190049}
   ikLeft: {fileID: 3054327158489704905}
+  turned: 0
 --- !u!1 &651091684314393728
 GameObject:
   m_ObjectHideFlags: 0
@@ -2280,8 +2281,8 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 1
-  m_Constraints: 114
-  m_CollisionDetection: 1
+  m_Constraints: 122
+  m_CollisionDetection: 0
 --- !u!136 &651091684334335251
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -2309,6 +2310,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
+  muerto: 0
   drops:
   - {fileID: 5885668108556654953, guid: f021849bfd4f1bb4189bb0e52713c02f, type: 3}
 --- !u!114 &651091684334335215
@@ -2326,6 +2328,7 @@ MonoBehaviour:
   eyes: {fileID: 651091683121192125}
   visionAngle: 60
   visionDistance: 10
+  detected: 0
 --- !u!1 &651091684342127616
 GameObject:
   m_ObjectHideFlags: 0

@@ -5,6 +5,7 @@ using UnityEngine;
 public class EnemyMovement : MonoBehaviour
 {
     public Transform ikRight, ikLeft;
+    public bool turned;
 
     private GameObject player;
     private Animator animator;
@@ -15,7 +16,9 @@ public class EnemyMovement : MonoBehaviour
     void Start()
     {
         animator = GetComponent<Animator>();
-        player = GameObject.FindGameObjectWithTag("Player");
+        player = GameObject.FindGameObjectWithTag("Player");        
+
+
         health = GetComponentInParent<EnemyHealth>();
         vision = GetComponentInParent<EnemyVision>();
     }
@@ -23,6 +26,17 @@ public class EnemyMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Vector3 relativeEnemy = transform.InverseTransformPoint(player.transform.position);
+        if (relativeEnemy.z < 0.0f && turned)
+        {
+            transform.localEulerAngles = new Vector3(transform.localEulerAngles.x, transform.localEulerAngles.y + 180, transform.localEulerAngles.z);
+            turned = false;
+        }
+        else if (relativeEnemy.z < 0.0f && !turned)
+        {
+            transform.localEulerAngles = new Vector3(transform.localEulerAngles.x, transform.localEulerAngles.y + 180, transform.localEulerAngles.z);
+            turned = true;
+        }
     }
 
     private void OnAnimatorIK()
@@ -47,11 +61,13 @@ public class EnemyMovement : MonoBehaviour
             animator.SetIKRotation(AvatarIKGoal.RightHand, ikRight.rotation);
             animator.SetIKRotation(AvatarIKGoal.LeftHand, ikLeft.rotation);
 
-            if (vision.detected)
-            {
-                animator.SetLookAtWeight(1);
-                animator.SetLookAtPosition(player.transform.position);
-            }
+
+            animator.SetLookAtWeight(1);
+            animator.SetLookAtPosition(player.transform.position + new Vector3(0.0f, 1.0f, 0.0f));
+            //if (vision.detected)
+            //{
+                
+            //}
         }      
     }
 }

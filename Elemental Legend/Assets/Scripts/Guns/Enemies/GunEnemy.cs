@@ -6,8 +6,8 @@ public class GunEnemy : MonoBehaviour
 {
     private EnemyMovement enemy;
     private GameObject player;
-    private EnemyVision vision;
 
+    public EnemyVision vision;
     public Transform shot;
 
     // Start is called before the first frame update

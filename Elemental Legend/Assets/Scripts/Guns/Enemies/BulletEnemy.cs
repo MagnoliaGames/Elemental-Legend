@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bullet : MonoBehaviour
+public class BulletEnemy : MonoBehaviour
 {
     private float normalization;
     private Vector3 normalizedOrientation;
@@ -37,7 +37,7 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Turn") || other.CompareTag("Player") || other.CompareTag("Bullet"))
+        if (other.CompareTag("Turn") || other.CompareTag("Enemy") || other.CompareTag("Bullet"))
         {
 
         }
@@ -47,12 +47,13 @@ public class Bullet : MonoBehaviour
             psProjectile.Stop();
             psExplode.Play();
             StartCoroutine(DestroyBullet());
-            if (other.CompareTag("Enemy"))
+            if (other.CompareTag("Player"))
             {
-                Debug.Log("hit enemy");
-                other.GetComponent<EnemyHealth>().health -= damage;
+                Debug.Log("hit player");
+                //other.GetComponent<EnemyHealth>().health -= damage;
+                Destroy(GetComponent<Collider>());
             }
-        }      
+        }
         //if (other.CompareTag("Piso"))
         //{
         //    ps.Play();

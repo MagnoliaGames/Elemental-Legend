@@ -4,22 +4,30 @@ using UnityEngine;
 
 public class PistolEnemy : GunEnemy
 {
-    private float time = 0.1f;
 
     public GameObject bullet;
+    public float time;
+    public bool canShoot = true;
+
     void FixedUpdate()
     {
         Look();
-        time += 0.02f;
-        //if ()
-        //{
-        //    time = 0;
-        //    Shoot();
-        //}
+        if (vision.detected && canShoot)
+        {
+            Shoot();
+            canShoot = false;
+            StartCoroutine(Reload());
+        }
     }
 
     void Shoot()
     {
         Instantiate(bullet, shot.position, shot.rotation);
+    }
+
+    IEnumerator Reload()
+    {
+        yield return new WaitForSeconds(time);
+        canShoot = true;
     }
 }
