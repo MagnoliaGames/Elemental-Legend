@@ -6,12 +6,11 @@ public class Gun : MonoBehaviour
 {
     private PlayerMovement playerMovement;
 
-    public Transform shot;
+    public Transform shot, ikRight, ikLeft;
 
     // Start is called before the first frame update
     void Start()
     {
-
         playerMovement = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
     }
 

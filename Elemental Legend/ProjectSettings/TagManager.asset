@@ -9,6 +9,7 @@ TagManager:
   - Enemy
   - Turn
   - Bullet
+  - Caja
   layers:
   - Default
   - TransparentFX

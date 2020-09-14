@@ -23,6 +23,8 @@ public class PlayerMovement : MonoBehaviour
 
     void Start()
     {
+        ikRight = GameObject.Find("IkRight").transform;
+        ikLeft = GameObject.Find("IkLeft").transform;
         erickParent = GameObject.Find("Erick Parent");
         erickChild = GameObject.Find("Erick Child");
         m_Rigidbody = GetComponent<Rigidbody>();
@@ -109,42 +111,6 @@ public class PlayerMovement : MonoBehaviour
             turned = false;
             transform.localEulerAngles = new Vector3(transform.localEulerAngles.x, transform.localEulerAngles.y + 180, transform.localEulerAngles.z);
         }
-
-        //if (turned == false && mouse.localPosition.z < 0)
-        //{
-        //    if (cont == 0)
-        //    {
-        //        transform.localScale = new Vector3(-1, 1, -1);
-        //        gun.transform.localScale = new Vector3(1f, 1f, -1f);
-        //        gun.roty = 180;
-        //        cont = 1;
-        //    }
-        //    else if (cont == 1)
-        //    {
-        //        transform.localScale = new Vector3(1, 1, 1);
-        //        gun.transform.localScale = new Vector3(1f, 1f, 1f);
-        //        gun.roty = 0;
-        //        cont = 0;
-        //    }
-
-        //}
-        //else if (turned == true && mouse.localPosition.z < 0)
-        //{
-        //    if (cont == 0)
-        //    {
-        //        transform.localScale = new Vector3(1, 1, 1);
-        //        gun.transform.localScale = new Vector3(1f, 1f, 1f);
-        //        gun.roty = 0;
-        //        cont = 1;
-        //    }
-        //    else if (cont == 1)
-        //    {
-        //        transform.localScale = new Vector3(-1, 1, -1);
-        //        gun.transform.localScale = new Vector3(1f, 1f, -1f);
-        //        gun.roty = 180;
-        //        cont = 0;
-        //    }
-        //}
     }
 
     private void Jump()
@@ -169,5 +135,12 @@ public class PlayerMovement : MonoBehaviour
             animator.SetBool("jump", false);
             IsGrounded = true;
         }    
+    }
+
+    public void FindIK(Transform Right, Transform Left)
+    {
+        ikRight = Right;
+        ikLeft = Left;
+        Debug.Log("hey");
     }
 }
