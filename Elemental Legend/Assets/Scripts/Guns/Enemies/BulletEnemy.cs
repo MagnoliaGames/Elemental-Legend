@@ -11,7 +11,7 @@ public class BulletEnemy : MonoBehaviour
 
     public Vector3 direction;
     public GameObject explode, projectile;
-    public float speed;
+    public float speed, destroyTime;
     public int damage = 10;
 
     // Start is called before the first frame update
@@ -20,6 +20,7 @@ public class BulletEnemy : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         psExplode = explode.GetComponent<ParticleSystem>();
         psProjectile = projectile.GetComponent<ParticleSystem>();
+        psProjectile.Play();
     }
 
     // Update is called once per frame
@@ -31,7 +32,7 @@ public class BulletEnemy : MonoBehaviour
 
     IEnumerator DestroyBullet()
     {
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(destroyTime);
         Destroy(gameObject);
     }
 
@@ -45,6 +46,7 @@ public class BulletEnemy : MonoBehaviour
         {
             speed = 0;
             psProjectile.Stop();
+            Destroy(psProjectile);
             psExplode.Play();
             StartCoroutine(DestroyBullet());
             if (other.CompareTag("Player"))

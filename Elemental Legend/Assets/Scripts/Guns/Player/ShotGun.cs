@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class M16 : Gun
+public class ShotGun : Gun
 {
     public float time;
     public bool canShoot = true;

@@ -4839,7 +4839,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3840906579271061839}
   m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
-  m_LocalPosition: {x: 0.1297, y: 2.5219, z: 2.2296}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3840906580797414964}
@@ -4864,7 +4864,8 @@ MonoBehaviour:
   explode: {fileID: 1485713575456181908}
   projectile: {fileID: 3840906580797414963}
   speed: 20
-  damage: 10
+  destroyTime: 3
+  damage: 5
 --- !u!54 &9104651395680211836
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -19313,8 +19314,8 @@ TrailRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 0, g: 0.11781762, b: 0.9529412, a: 0.87058824}
-      key1: {r: 1, g: 0.9603985, b: 0.4481132, a: 0}
+      key0: {r: 0.4750996, g: 0.031372555, b: 0.98039216, a: 0.87058824}
+      key1: {r: 0, g: 0.23574829, b: 1, a: 0}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}

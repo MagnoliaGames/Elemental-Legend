@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1313529287824999577
+--- !u!1 &4480241531342569767
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,45 +8,45 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 2621603186837255818}
-  - component: {fileID: 6429671914997304508}
-  - component: {fileID: 722337225927536709}
+  - component: {fileID: 609773994378703668}
+  - component: {fileID: 8443506617973573890}
+  - component: {fileID: 2743208822237722107}
   m_Layer: 0
-  m_Name: M16
+  m_Name: Escopeta
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &2621603186837255818
+--- !u!4 &609773994378703668
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1313529287824999577}
-  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0.000496299, z: 0.481103}
+  m_GameObject: {fileID: 4480241531342569767}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.016000032, z: 0.28499997}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 6997321667252313915}
+  m_Father: {fileID: 5538803304633820022}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
---- !u!33 &6429671914997304508
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!33 &8443506617973573890
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1313529287824999577}
-  m_Mesh: {fileID: -5397873817754676592, guid: 3d73065e035eef241a1edd155f808efc, type: 3}
---- !u!23 &722337225927536709
+  m_GameObject: {fileID: 4480241531342569767}
+  m_Mesh: {fileID: 8021910643487555956, guid: 2d44fea6546231142bdaa4ede38dadc7, type: 3}
+--- !u!23 &2743208822237722107
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1313529287824999577}
+  m_GameObject: {fileID: 4480241531342569767}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -57,7 +57,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 4e1da0266d9ccdf44af593d775061171, type: 2}
+  - {fileID: 2100000, guid: edfbef37a78c00746840de3e95528c91, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -78,7 +78,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!1 &1611286635607695179
+--- !u!1 &5538803302806805961
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -86,90 +86,7 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 9142547932071633360}
-  m_Layer: 0
-  m_Name: IkRight
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &9142547932071633360
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1611286635607695179}
-  m_LocalRotation: {x: 0.005151143, y: -0.36520648, z: -0.5006887, w: 0.7847984}
-  m_LocalPosition: {x: 0.122, y: -0.051503845, z: 0.27010316}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 6997321667252313915}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: -20.954, y: -38.268, z: -57.732002}
---- !u!1 &6997321667252313912
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 6997321667252313915}
-  - component: {fileID: 2326298583235710602}
-  m_Layer: 0
-  m_Name: M16
-  m_TagString: Weapon
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &6997321667252313915
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6997321667252313912}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.35, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 2621603186837255818}
-  - {fileID: 9142547932071633360}
-  - {fileID: 2461493963884932269}
-  - {fileID: 6584180163814105761}
-  m_Father: {fileID: 0}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2326298583235710602
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6997321667252313912}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c09b310b78e09ef47a2a68c0f56548d2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shot: {fileID: 6584180163814105761}
-  ikRight: {fileID: 9142547932071633360}
-  ikLeft: {fileID: 2461493963884932269}
-  time: 0.1
-  canShoot: 1
-  bullet: {fileID: 3840906579271061839, guid: 7b35826de216a884daff9335f9c3d2f5, type: 3}
---- !u!1 &7285179131044165518
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2461493963884932269}
+  - component: {fileID: 5538803302806805966}
   m_Layer: 0
   m_Name: IkLeft
   m_TagString: Untagged
@@ -177,21 +94,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &2461493963884932269
+--- !u!4 &5538803302806805966
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7285179131044165518}
-  m_LocalRotation: {x: 0.20171052, y: -0.22754696, z: 0.7619707, w: 0.5717831}
-  m_LocalPosition: {x: -0.0362, y: 0.09319621, z: 0.70850325}
+  m_GameObject: {fileID: 5538803302806805961}
+  m_LocalRotation: {x: 0.40004683, y: -0.14721403, z: 0.8798019, w: 0.21033123}
+  m_LocalPosition: {x: -0.0473, y: 0.0366, z: 0.3507}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 6997321667252313915}
+  m_Father: {fileID: 5538803304633820022}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 35.271, y: 3.3130002, z: 107.284004}
---- !u!1 &8927541671302347526
+  m_LocalEulerAnglesHint: {x: 25.298, y: 45.243004, z: 163.79501}
+--- !u!1 &5538803303407029108
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -199,7 +116,37 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 6584180163814105761}
+  - component: {fileID: 5538803303407029109}
+  m_Layer: 0
+  m_Name: IkRight
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5538803303407029109
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5538803303407029108}
+  m_LocalRotation: {x: -0.015447579, y: -0.3171949, z: -0.50513256, w: 0.8024898}
+  m_LocalPosition: {x: 0.111, y: -0.038, z: 0.015}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5538803304633820022}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: -20.197, y: -31.723001, z: -58.583004}
+--- !u!1 &5538803303587345995
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5538803303587345992}
   m_Layer: 0
   m_Name: Shot
   m_TagString: Untagged
@@ -207,17 +154,70 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &6584180163814105761
+--- !u!4 &5538803303587345992
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8927541671302347526}
+  m_GameObject: {fileID: 5538803303587345995}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.06049622, z: 0.9901031}
+  m_LocalPosition: {x: 0, y: 0.08560002, z: 0.59169996}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 6997321667252313915}
+  m_Father: {fileID: 5538803304633820022}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &5538803304633820017
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5538803304633820022}
+  - component: {fileID: 5538803304633820023}
+  m_Layer: 0
+  m_Name: ShotGun
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5538803304633820022
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5538803304633820017}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.2, z: 0.2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 609773994378703668}
+  - {fileID: 5538803303407029109}
+  - {fileID: 5538803302806805966}
+  - {fileID: 5538803303587345992}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5538803304633820023
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5538803304633820017}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 990de0c181fbf554aa38c5395e64ade6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shot: {fileID: 5538803303587345992}
+  ikRight: {fileID: 5538803303407029109}
+  ikLeft: {fileID: 5538803302806805966}
+  time: 0.5
+  canShoot: 1
+  bullet: {fileID: 6301867286797864945, guid: 1ed256e642c89cb439cd2746be0c0e06, type: 3}

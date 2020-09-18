@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 567964562728328108}
   m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
-  m_LocalPosition: {x: 0.1297, y: 2.5219, z: 2.2296}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 567964563113563351}
@@ -52,6 +52,7 @@ MonoBehaviour:
   explode: {fileID: 2752302238252500087}
   projectile: {fileID: 567964563113563344}
   speed: 10
+  destroyTime: 3
   damage: 10
 --- !u!54 &5545704486410885535
 Rigidbody:
