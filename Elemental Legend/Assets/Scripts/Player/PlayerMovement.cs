@@ -10,21 +10,19 @@ public class PlayerMovement : MonoBehaviour
     private CameraFollow cameraFollow;
     private Animator animator;
     private Gun gun;
-    private int jumps;
+    public bool CanThrow;
 
     public bool IsGrounded { get; private set; }
 
     public bool turned, frente;
-    public bool doubleJump;
     public float gravityForce = -9.81f;
     public float movementSpeed = 10;
     public float jumpForce = 15;
     public Transform mouse, ikRight, ikLeft;
+    public List<GameObject> granades;
 
     void Start()
     {
-        ikRight = GameObject.Find("IkRight").transform;
-        ikLeft = GameObject.Find("IkLeft").transform;
         erickParent = GameObject.Find("Erick Parent");
         erickChild = GameObject.Find("Erick Child");
         m_Rigidbody = GetComponent<Rigidbody>();
@@ -32,20 +30,22 @@ public class PlayerMovement : MonoBehaviour
         cameraFollow = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraFollow>();
         animator = GetComponent<Animator>();
         IsGrounded = true;
+        CanThrow = true;
     }
 
     void FixedUpdate()
     {
-        animator.SetBool("walk", false);
+        animator.SetBool("walk", false);    
+
+        mouse.position = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, cameraFollow.generalOffset.x));
+        m_Rigidbody.AddForce(gravity, ForceMode.Acceleration);
+
         if (gun == null)
         {
             gun = GetComponentInChildren<Gun>();
         }
 
-        mouse.position = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, cameraFollow.generalOffset.x));
-        m_Rigidbody.AddForce(gravity, ForceMode.Acceleration);
-
-        if (Input.GetKey(KeyCode.D))
+        if (Input.GetKey(KeyCode.D) && !animator.GetCurrentAnimatorStateInfo(1).IsName("Granade"))
         {
             animator.SetBool("walk", true);            
             frente = true;
@@ -60,7 +60,7 @@ public class PlayerMovement : MonoBehaviour
                 animator.SetFloat("front", 1);
             }           
         }
-        if (Input.GetKey(KeyCode.A))
+        if (Input.GetKey(KeyCode.A) && !animator.GetCurrentAnimatorStateInfo(1).IsName("Granade"))
         {
             animator.SetBool("walk", true);
             frente = false;
@@ -80,6 +80,22 @@ public class PlayerMovement : MonoBehaviour
             Jump();
         }
 
+        if (Input.GetKeyDown(KeyCode.G) && 
+            granades.Count > 0 && 
+            !animator.GetCurrentAnimatorStateInfo(1).IsName("Granade"))
+        {           
+            animator.SetBool("granade", true);
+           
+            if (CanThrow)
+            {
+                StartCoroutine(ThrowGranade());
+                
+                CanThrow = false;
+
+                StartCoroutine(ReloadGranade());
+            }                    
+        }
+
         LookMouse(); 
     }
 
@@ -97,6 +113,17 @@ public class PlayerMovement : MonoBehaviour
 
         animator.SetLookAtWeight(1);
         animator.SetLookAtPosition(mouse.position);
+        gun.gameObject.SetActive(true);
+
+        if (animator.GetCurrentAnimatorStateInfo(1).IsName("Granade"))
+        {
+            gun.gameObject.SetActive(false);
+            animator.SetIKPositionWeight(AvatarIKGoal.RightHand, 0);
+            animator.SetIKPositionWeight(AvatarIKGoal.LeftHand, 0);
+            animator.SetIKRotationWeight(AvatarIKGoal.RightHand, 0);
+            animator.SetIKRotationWeight(AvatarIKGoal.LeftHand, 0);
+            animator.SetLookAtWeight(0);
+        }
     }
 
     private void LookMouse()
@@ -117,13 +144,8 @@ public class PlayerMovement : MonoBehaviour
     {
         animator.SetBool("jump", true);
         if (IsGrounded)
-        {           
-            jumps = 0;
-        }
-        if (IsGrounded || (doubleJump && jumps < 2))
         {
             m_Rigidbody.velocity = Vector3.up * jumpForce;
-            jumps += 1;
             IsGrounded = false;
         }      
     }
@@ -141,6 +163,20 @@ public class PlayerMovement : MonoBehaviour
     {
         ikRight = Right;
         ikLeft = Left;
-        Debug.Log("hey");
+    }
+
+    IEnumerator ThrowGranade()
+    {
+        yield return new WaitForSeconds(0.8f);
+        GameObject granade = granades[granades.Count - 1];
+        granades.RemoveAt(granades.Count - 1);
+        Instantiate(granade, ikRight.position, new Quaternion());
+    }
+
+    IEnumerator ReloadGranade()
+    {
+        yield return new WaitForSeconds(0.5f);
+        animator.SetBool("granade", false);
+        CanThrow = true;
     }
 }

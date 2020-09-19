@@ -1238,6 +1238,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 920266ead05a23c42a1131236becf6fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CanThrow: 0
   turned: 0
   frente: 0
   doubleJump: 1
@@ -1247,6 +1248,8 @@ MonoBehaviour:
   mouse: {fileID: 5192523835647850543}
   ikRight: {fileID: 5192523836321001536}
   ikLeft: {fileID: 5192523836135028952}
+  granades:
+  - {fileID: 5819635613094442267, guid: 5da761422c5e77944a8b07f08ad131fe, type: 3}
 --- !u!1 &5192523835112180465
 GameObject:
   m_ObjectHideFlags: 0

@@ -51,7 +51,6 @@ public class BulletEnemy : MonoBehaviour
             StartCoroutine(DestroyBullet());
             if (other.CompareTag("Player"))
             {
-                Debug.Log("hit player");
                 //other.GetComponent<EnemyHealth>().health -= damage;
                 Destroy(GetComponent<Collider>());
             }
