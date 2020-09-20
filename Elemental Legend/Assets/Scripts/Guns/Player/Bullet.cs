@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    private float normalization;
-    private Vector3 normalizedOrientation;
     private Rigidbody rb;
     private ParticleSystem psExplode, psProjectile;
 
@@ -15,7 +13,7 @@ public class Bullet : MonoBehaviour
     public int damage = 10;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         rb = GetComponent<Rigidbody>();
         psExplode = explode.GetComponent<ParticleSystem>();
@@ -50,16 +48,9 @@ public class Bullet : MonoBehaviour
             psExplode.Play();
             StartCoroutine(DestroyBullet());
             if (other.CompareTag("Enemy"))
-            {
-                Debug.Log("hit enemy");
-                other.GetComponent<EnemyHealth>().health -= damage;
+            {            
                 Destroy(GetComponent<Collider>());
             }
         }      
-        //if (other.CompareTag("Piso"))
-        //{
-        //    ps.Play();
-        //    StartCoroutine(DestroyBullet());
-        //}
     }
 }

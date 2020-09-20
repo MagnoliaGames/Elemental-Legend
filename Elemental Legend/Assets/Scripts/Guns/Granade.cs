@@ -45,8 +45,7 @@ public class Granade : MonoBehaviour
                 {
                     Debug.Log("hit enemy");
                     enemy.GetComponent<EnemyHealth>().health -= damage;
-                    enemy.GetComponent<EnemyHealth>().granadeHitable = false;
-                    GameObject.Find("Granada").SetActive(false);
+                    enemy.GetComponent<EnemyHealth>().granadeHitable = false;                    
                 }              
             }
         }

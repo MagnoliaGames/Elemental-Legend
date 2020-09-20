@@ -7,19 +7,20 @@ public class EnemyHealth : MonoBehaviour
     private Animator animator;
 
     public int health = 100;
-    public bool muerto, granadeHitable;
+    public bool muerto, bulletHit, granadeHitable;
     public GameObject[] drops;
 
    private void Start()
     {
         muerto = false;
+        bulletHit = false;
         granadeHitable = true;
         animator = GetComponentInChildren<Animator>();
     }
 
     private void Update()
     {
-        if (health <= 0)
+        if (health <= 0 && !muerto)
         {
             muerto = true;
             animator.SetBool("Muerto", true);
@@ -33,6 +34,22 @@ public class EnemyHealth : MonoBehaviour
         {
             StartCoroutine(Hitable());
         }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Bullet"))
+        {
+            health -= other.GetComponent<Bullet>().damage;
+            bulletHit = true;
+            StartCoroutine(ResetBulletHit());
+        }
+    }
+
+    IEnumerator ResetBulletHit()
+    {
+        yield return new WaitForSeconds(5f);
+        bulletHit = false;
     }
 
     IEnumerator Destroy()

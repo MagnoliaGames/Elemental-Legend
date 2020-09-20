@@ -1241,7 +1241,6 @@ MonoBehaviour:
   CanThrow: 0
   turned: 0
   frente: 0
-  doubleJump: 1
   gravityForce: -9.81
   movementSpeed: 5
   jumpForce: 10
@@ -1250,6 +1249,9 @@ MonoBehaviour:
   ikLeft: {fileID: 5192523836135028952}
   granades:
   - {fileID: 5819635613094442267, guid: 5da761422c5e77944a8b07f08ad131fe, type: 3}
+  - {fileID: 7920948256129992795, guid: 0b2cd2f0c924dc14cb81fc4429003d68, type: 3}
+  - {fileID: 5819635613094442267, guid: 5da761422c5e77944a8b07f08ad131fe, type: 3}
+  - {fileID: 7920948256129992795, guid: 0b2cd2f0c924dc14cb81fc4429003d68, type: 3}
 --- !u!1 &5192523835112180465
 GameObject:
   m_ObjectHideFlags: 0

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    private GameObject erickChild, erickParent;
+    private GameObject erickParent;
     private Rigidbody m_Rigidbody;
     private Vector3 gravity;
     private CameraFollow cameraFollow;
@@ -24,7 +24,6 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         erickParent = GameObject.Find("Erick Parent");
-        erickChild = GameObject.Find("Erick Child");
         m_Rigidbody = GetComponent<Rigidbody>();
         gravity = new Vector3(0, gravityForce, 0);
         cameraFollow = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraFollow>();
@@ -39,11 +38,6 @@ public class PlayerMovement : MonoBehaviour
 
         mouse.position = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, cameraFollow.generalOffset.x));
         m_Rigidbody.AddForce(gravity, ForceMode.Acceleration);
-
-        if (gun == null)
-        {
-            gun = GetComponentInChildren<Gun>();
-        }
 
         if (Input.GetKey(KeyCode.D) && !animator.GetCurrentAnimatorStateInfo(1).IsName("Granade"))
         {
@@ -113,6 +107,11 @@ public class PlayerMovement : MonoBehaviour
 
         animator.SetLookAtWeight(1);
         animator.SetLookAtPosition(mouse.position);
+
+        if (gun == null)
+        {
+            gun = GetComponentInChildren<Gun>();
+        }
         gun.gameObject.SetActive(true);
 
         if (animator.GetCurrentAnimatorStateInfo(1).IsName("Granade"))

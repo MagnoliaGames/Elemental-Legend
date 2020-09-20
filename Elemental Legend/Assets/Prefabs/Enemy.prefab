@@ -399,7 +399,7 @@ Transform:
   m_LocalScale: {x: 1.2397513, y: 1.2397513, z: 1.2397513}
   m_Children: []
   m_Father: {fileID: 651091683002355947}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &651091682908076162
 MeshFilter:
@@ -506,7 +506,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 651091683002355947}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &651091683002355944
 GameObject:
@@ -535,6 +535,7 @@ Transform:
   m_LocalPosition: {x: -0.0844793, y: 8.005655e-10, z: -9.325873e-17}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 651091683121192125}
   - {fileID: 651091684248496076}
   - {fileID: 651091682908076160}
   - {fileID: 651091682975795676}
@@ -772,12 +773,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 651091683121192098}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.6199999, z: 0.13000011}
+  m_LocalRotation: {x: -0.51752126, y: 0.481842, z: 0.51752126, w: 0.481842}
+  m_LocalPosition: {x: -0.121802755, y: 0.10734762, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 651091683398181941}
-  m_RootOrder: 3
+  m_Father: {fileID: 651091683002355947}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &651091683154901146
 GameObject:
@@ -2053,7 +2054,7 @@ Transform:
   m_LocalScale: {x: 1.2397513, y: 1.2397513, z: 1.2397513}
   m_Children: []
   m_Father: {fileID: 651091683002355947}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &651091684248496078
 MeshFilter:
@@ -2133,7 +2134,6 @@ Transform:
   - {fileID: 5376650680823164349}
   - {fileID: 651091683362801867}
   - {fileID: 651091683031129150}
-  - {fileID: 651091683121192125}
   m_Father: {fileID: 651091684334335212}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2311,6 +2311,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 100
   muerto: 0
+  granadeHitable: 0
   drops:
   - {fileID: 5885668108556654953, guid: f021849bfd4f1bb4189bb0e52713c02f, type: 3}
 --- !u!114 &651091684334335215
@@ -2327,7 +2328,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   eyes: {fileID: 651091683121192125}
   visionAngle: 60
-  visionDistance: 10
+  visionDistance: 5.5
   detected: 0
 --- !u!1 &651091684342127616
 GameObject:
