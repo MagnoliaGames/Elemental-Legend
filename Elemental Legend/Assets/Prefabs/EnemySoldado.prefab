@@ -2171,6 +2171,7 @@ MonoBehaviour:
   ikRight: {fileID: 7962101631319190049}
   ikLeft: {fileID: 3054327158489704905}
   turned: 0
+  warningState: 0
 --- !u!1 &651091684314393728
 GameObject:
   m_ObjectHideFlags: 0
@@ -2246,7 +2247,7 @@ GameObject:
   - component: {fileID: 651091684334335214}
   - component: {fileID: 651091684334335215}
   m_Layer: 0
-  m_Name: Enemy
+  m_Name: EnemySoldado
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2311,6 +2312,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 100
   muerto: 0
+  bulletHit: 0
   granadeHitable: 0
   drops:
   - {fileID: 5885668108556654953, guid: f021849bfd4f1bb4189bb0e52713c02f, type: 3}

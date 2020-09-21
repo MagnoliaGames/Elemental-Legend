@@ -24,7 +24,10 @@ public class EnemyHealth : MonoBehaviour
         {
             muerto = true;
             animator.SetBool("Muerto", true);
-            Destroy(GetComponentInChildren<GunEnemy>().gameObject);
+            if (GetComponentInChildren<GunEnemy>())
+            {
+                Destroy(GetComponentInChildren<GunEnemy>().gameObject);
+            }           
             Destroy(GetComponent<Rigidbody>());
             Destroy(GetComponent<CapsuleCollider>());
             StartCoroutine(Destroy());      

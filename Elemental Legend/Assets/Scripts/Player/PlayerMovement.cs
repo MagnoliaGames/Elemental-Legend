@@ -34,6 +34,15 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        foreach (GameObject enemy in enemies)
+        {
+            if (enemy.GetComponent<Collider>())
+            {
+                Physics.IgnoreCollision(GetComponent<Collider>(), enemy.GetComponent<Collider>());
+            }       
+        }       
+
         animator.SetBool("walk", false);    
 
         mouse.position = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, cameraFollow.generalOffset.x));
@@ -45,7 +54,7 @@ public class PlayerMovement : MonoBehaviour
             frente = true;
             if (turned)
             {
-                erickParent.transform.position += -transform.forward * movementSpeed * Time.fixedDeltaTime;
+                erickParent.transform.position -= transform.forward * movementSpeed * Time.fixedDeltaTime;
                 animator.SetFloat("front", -1);
             }
             else
@@ -65,7 +74,7 @@ public class PlayerMovement : MonoBehaviour
             }
             else
             {
-                erickParent.transform.position += -transform.forward * movementSpeed * Time.fixedDeltaTime;
+                erickParent.transform.position -= transform.forward * movementSpeed * Time.fixedDeltaTime;
                 animator.SetFloat("front", -1);
             }
         }
