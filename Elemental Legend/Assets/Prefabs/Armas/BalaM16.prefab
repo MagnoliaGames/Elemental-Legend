@@ -4864,7 +4864,7 @@ MonoBehaviour:
   explode: {fileID: 1485713575456181908}
   projectile: {fileID: 3840906580797414963}
   speed: 20
-  destroyTime: 3
+  destroyTime: 0.2
   damage: 5
 --- !u!54 &9104651395680211836
 Rigidbody:

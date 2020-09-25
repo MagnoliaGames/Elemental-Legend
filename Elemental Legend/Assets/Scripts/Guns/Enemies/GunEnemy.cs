@@ -4,23 +4,21 @@ using UnityEngine;
 
 public class GunEnemy : MonoBehaviour
 {
-    private EnemyMovement enemy;
     private GameObject player;
 
-    public EnemyVision vision;
     public Transform shot;
+    public EnemyMovement enemy;
 
     // Start is called before the first frame update
     void Start()
     {
-        vision = GetComponentInParent<EnemyVision>();
         enemy = GetComponentInParent<EnemyMovement>();
         player = GameObject.FindGameObjectWithTag("Player");
     }
 
     public void Look()
     {
-        if (vision.detected)
+        if (enemy.warningState)
         {
             transform.LookAt(player.transform.position + new Vector3(0, +1.5f, 0));
             transform.localEulerAngles = new Vector3(transform.localEulerAngles.x, 0, transform.localEulerAngles.z);

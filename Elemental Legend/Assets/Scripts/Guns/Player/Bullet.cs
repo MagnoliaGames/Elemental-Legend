@@ -28,12 +28,6 @@ public class Bullet : MonoBehaviour
         StartCoroutine(DestroyBullet());
     }
 
-    IEnumerator DestroyBullet()
-    {
-        yield return new WaitForSeconds(destroyTime);
-        Destroy(gameObject);
-    }
-
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Turn") || other.CompareTag("Player") || other.CompareTag("Bullet"))
@@ -48,9 +42,14 @@ public class Bullet : MonoBehaviour
             psExplode.Play();
             StartCoroutine(DestroyBullet());
             if (other.CompareTag("Enemy"))
-            {            
+            {
                 Destroy(GetComponent<Collider>());
             }
         }      
+    }
+    IEnumerator DestroyBullet()
+    {
+        yield return new WaitForSeconds(destroyTime);
+        Destroy(gameObject);
     }
 }
