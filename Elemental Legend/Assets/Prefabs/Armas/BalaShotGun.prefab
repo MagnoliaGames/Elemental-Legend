@@ -4998,7 +4998,7 @@ MonoBehaviour:
   direction: {x: 0, y: 0, z: 0}
   explode: {fileID: 8549888624103968810}
   projectile: {fileID: 6301867287955079309}
-  speed: 15
+  speed: 20
   destroyTime: 0.2
   damage: 20
 --- !u!54 &2045521481825045954

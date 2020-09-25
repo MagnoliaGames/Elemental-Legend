@@ -9,7 +9,7 @@ public class CameraFollow : MonoBehaviour
     public Vector3 generalOffset { get; private set; }
 
     public Transform target;
-    public float smoothSpeed = 3f;
+    public float smoothSpeed;
     public Vector3 offsetGround, offsetJump, cameraOffset;
 
     private void Awake()

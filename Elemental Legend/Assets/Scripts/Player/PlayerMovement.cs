@@ -63,7 +63,7 @@ public class PlayerMovement : MonoBehaviour
                 animator.SetFloat("front", 1);
             }           
         }
-        if (Input.GetKey(KeyCode.A) && !animator.GetCurrentAnimatorStateInfo(1).IsName("Granade"))
+        else if (Input.GetKey(KeyCode.A) && !animator.GetCurrentAnimatorStateInfo(1).IsName("Granade"))
         {
             animator.SetBool("walk", true);
             frente = false;
@@ -104,6 +104,9 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnAnimatorIK()
     {
+        animator.SetLayerWeight(1, 1);
+        animator.SetLayerWeight(2, 0);
+
         animator.SetIKPositionWeight(AvatarIKGoal.RightHand, 1);
         animator.SetIKPositionWeight(AvatarIKGoal.LeftHand, 1);
         animator.SetIKRotationWeight(AvatarIKGoal.RightHand, 1);
@@ -114,17 +117,19 @@ public class PlayerMovement : MonoBehaviour
         animator.SetIKRotation(AvatarIKGoal.RightHand, ikRight.rotation);
         animator.SetIKRotation(AvatarIKGoal.LeftHand, ikLeft.rotation);
 
-        animator.SetLookAtWeight(1);
-        animator.SetLookAtPosition(mouse.position);
+        animator.SetLookAtWeight(1);        
 
         if (gun == null)
         {
             gun = GetComponentInChildren<Gun>();
         }
         gun.gameObject.SetActive(true);
+        animator.SetLookAtPosition(gun.shot.position);
 
         if (animator.GetCurrentAnimatorStateInfo(1).IsName("Granade"))
         {
+            animator.SetLayerWeight(1, 0);
+            animator.SetLayerWeight(2, 1);
             gun.gameObject.SetActive(false);
             animator.SetIKPositionWeight(AvatarIKGoal.RightHand, 0);
             animator.SetIKPositionWeight(AvatarIKGoal.LeftHand, 0);

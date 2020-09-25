@@ -25,7 +25,7 @@ public class EnemyMovement : MonoBehaviour
     void FixedUpdate()
     {
         if (vision.detected || 
-            Vector3.Distance(player.transform.position, transform.position) <= 1 || 
+            Vector3.Distance(player.transform.position, transform.position) <= 2 || 
             health.bulletHit ||
             !health.granadeHitable)
         {
@@ -77,7 +77,7 @@ public class EnemyMovement : MonoBehaviour
             if (vision.detected)
             {
                 animator.SetLookAtWeight(1);
-                animator.SetLookAtPosition(player.transform.position + new Vector3(0.0f, 1.0f, 0.0f));
+                animator.SetLookAtPosition(GetComponentInChildren<GunEnemy>().shot.position);
             }
         }      
     }

@@ -12,7 +12,7 @@ public class PistolEnemy : GunEnemy
     void FixedUpdate()
     {
         Look();
-        if (vision.detected && canShoot)
+        if (enemy.warningState && canShoot)
         {
             Shoot();
             canShoot = false;
