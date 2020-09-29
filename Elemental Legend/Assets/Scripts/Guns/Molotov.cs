@@ -25,6 +25,7 @@ public class Molotov : MonoBehaviour
 
     void FixedUpdate()
     {
+        StartCoroutine(DestroyMolotovNoCollision());
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -52,6 +53,7 @@ public class Molotov : MonoBehaviour
                     }
                 }
             }
+            StopCoroutine(DestroyMolotovNoCollision());
             StartCoroutine(DestroyMolotov());
         }
     }
@@ -65,6 +67,11 @@ public class Molotov : MonoBehaviour
     IEnumerator DestroyMolotov()
     {
         yield return new WaitForSeconds(2);
+        Destroy(gameObject);
+    }
+    IEnumerator DestroyMolotovNoCollision()
+    {
+        yield return new WaitForSeconds(5);
         Destroy(gameObject);
     }
 }
