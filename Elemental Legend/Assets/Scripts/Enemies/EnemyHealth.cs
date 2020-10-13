@@ -23,6 +23,7 @@ public class EnemyHealth : MonoBehaviour
         if (health <= 0 && !muerto)
         {
             muerto = true;
+            LevelManager.puntuacion += 100;
             animator.SetBool("Muerto", true);
             if (GetComponentInChildren<GunEnemy>())
             {

@@ -12,6 +12,7 @@ TagManager:
   - Caja
   - BulletEnemy
   - Punch
+  - Nativo
   layers:
   - Default
   - TransparentFX
