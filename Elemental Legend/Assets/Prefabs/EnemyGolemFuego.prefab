@@ -1918,7 +1918,7 @@ MonoBehaviour:
   bulletHit: 0
   granadeHitable: 0
   drops:
-  - {fileID: 5885668108556654953, guid: f021849bfd4f1bb4189bb0e52713c02f, type: 3}
+  - {fileID: 0}
 --- !u!1 &6875438623915732421
 GameObject:
   m_ObjectHideFlags: 0

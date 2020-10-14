@@ -8,7 +8,6 @@ public class EnemyHealth : MonoBehaviour
 
     public int health = 100;
     public bool muerto, bulletHit, granadeHitable;
-    public GameObject[] drops;
 
    private void Start()
     {
@@ -59,7 +58,6 @@ public class EnemyHealth : MonoBehaviour
     IEnumerator Destroy()
     {
         yield return new WaitForSeconds(1.15f);
-        GameObject.Instantiate(drops[Random.Range(0, drops.Length)], new Vector3(transform.position.x, transform.position.y + 1, transform.position.z), new Quaternion());
         Destroy(this.gameObject);
     }
 
