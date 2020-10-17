@@ -36,6 +36,11 @@ public class EnemyMovement : MonoBehaviour
             warningState = false;
         }
 
+        if (health.muerto)
+        {
+            warningState = false;
+        }
+
         if (warningState)
         {
             Vector3 relativePlayer = transform.InverseTransformPoint(player.transform.position);

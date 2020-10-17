@@ -25,21 +25,24 @@ public class CameraFollow : MonoBehaviour
 
     private void FixedUpdate()
     {
-        target.position = playerMovement.transform.position + cameraOffset;
-        target.rotation = GameObject.Find("Erick Parent").transform.rotation;
-
-        transform.LookAt(target);
-        Vector3 desiredPosition = target.TransformPoint(generalOffset);
-        Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed * Time.fixedDeltaTime);
-        transform.position = smoothedPosition;
-
-        if (playerMovement.IsGrounded == false)
+        if (playerMovement != null)
         {
-            generalOffset = offsetJump;
-        }
-        else
-        {
-            generalOffset = offsetGround;
-        }
+            target.position = playerMovement.transform.position + cameraOffset;
+            target.rotation = GameObject.Find("Erick Parent").transform.rotation;
+
+            transform.LookAt(target);
+            Vector3 desiredPosition = target.TransformPoint(generalOffset);
+            Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed * Time.fixedDeltaTime);
+            transform.position = smoothedPosition;
+
+            if (playerMovement.IsGrounded == false)
+            {
+                generalOffset = offsetJump;
+            }
+            else
+            {
+                generalOffset = offsetGround;
+            }
+        }       
     }
 }

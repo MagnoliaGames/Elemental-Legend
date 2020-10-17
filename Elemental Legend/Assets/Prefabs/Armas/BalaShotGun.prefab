@@ -5000,7 +5000,7 @@ MonoBehaviour:
   projectile: {fileID: 6301867287955079309}
   speed: 20
   destroyTime: 0.2
-  damage: 20
+  damage: 25
 --- !u!54 &2045521481825045954
 Rigidbody:
   m_ObjectHideFlags: 0

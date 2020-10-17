@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class ShotGun : Gun
 {
-    public float time;
-    public bool canShoot = true;
-
     public GameObject bullet;
     void FixedUpdate()
     {
@@ -22,11 +19,5 @@ public class ShotGun : Gun
     void Shoot()
     {
         Instantiate(bullet, shot.position, shot.rotation);
-    }
-
-    IEnumerator Reload()
-    {
-        yield return new WaitForSeconds(time);
-        canShoot = true;
     }
 }

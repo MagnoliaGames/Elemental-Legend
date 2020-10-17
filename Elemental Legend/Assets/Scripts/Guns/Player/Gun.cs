@@ -7,10 +7,13 @@ public class Gun : MonoBehaviour
     private PlayerMovement playerMovement;
 
     public Transform shot, ikRight, ikLeft;
+    public bool canShoot;
+    public float time;
 
     // Start is called before the first frame update
     void Start()
     {
+        canShoot = true;
         playerMovement = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
     }
 
@@ -18,5 +21,11 @@ public class Gun : MonoBehaviour
     {
         transform.LookAt(playerMovement.mouse);
         transform.localEulerAngles = new Vector3(transform.localEulerAngles.x, 0, transform.localEulerAngles.z);      
+    }
+
+    public IEnumerator Reload()
+    {
+        yield return new WaitForSeconds(time);
+        canShoot = true;
     }
 }

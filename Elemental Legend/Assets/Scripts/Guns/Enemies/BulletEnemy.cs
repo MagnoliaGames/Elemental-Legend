@@ -12,7 +12,6 @@ public class BulletEnemy : MonoBehaviour
     public Vector3 direction;
     public GameObject explode, projectile;
     public float speed, destroyTime;
-    public int damage = 10;
 
     // Start is called before the first frame update
     void Awake()
