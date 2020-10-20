@@ -158,8 +158,10 @@ MonoBehaviour:
   shot: {fileID: 6584180163814105761}
   ikRight: {fileID: 9142547932071633360}
   ikLeft: {fileID: 2461493963884932269}
-  time: 0.1
+  pistol: {fileID: 9114346493764136175, guid: 90be3b1fffdfbcd4d94ac656e19ecdef, type: 3}
   canShoot: 1
+  time: 0.1
+  ammo: 200
   bullet: {fileID: 3840906579271061839, guid: 7b35826de216a884daff9335f9c3d2f5, type: 3}
 --- !u!1 &7285179131044165518
 GameObject:

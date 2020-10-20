@@ -218,6 +218,8 @@ MonoBehaviour:
   shot: {fileID: 5538803303587345992}
   ikRight: {fileID: 5538803303407029109}
   ikLeft: {fileID: 5538803302806805966}
+  pistol: {fileID: 9114346493764136175, guid: 90be3b1fffdfbcd4d94ac656e19ecdef, type: 3}
   canShoot: 1
   time: 1
+  ammo: 30
   bullet: {fileID: 6301867286797864945, guid: 1ed256e642c89cb439cd2746be0c0e06, type: 3}

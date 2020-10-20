@@ -5,6 +5,7 @@ using UnityEngine;
 public class M16 : Gun
 {
     public GameObject bullet;
+
     void FixedUpdate()
     {
         Look();
@@ -12,8 +13,10 @@ public class M16 : Gun
         {
             Shoot();
             canShoot = false;
+            ammo -= 1;
             StartCoroutine(Reload());
         }
+        ChangeWeapon();
     }
 
     void Shoot()

@@ -5,16 +5,19 @@ using UnityEngine;
 public class Gun : MonoBehaviour
 {
     private PlayerMovement playerMovement;
+    private GameObject erickChild;
 
     public Transform shot, ikRight, ikLeft;
+    public GameObject pistol;
     public bool canShoot;
     public float time;
+    public int ammo;
 
-    // Start is called before the first frame update
     void Start()
     {
         canShoot = true;
         playerMovement = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
+        erickChild = GameObject.Find("Erick Child");
     }
 
     public void Look()
@@ -27,5 +30,16 @@ public class Gun : MonoBehaviour
     {
         yield return new WaitForSeconds(time);
         canShoot = true;
+    }
+
+    public void ChangeWeapon()
+    {
+        if (ammo <= 0)
+        {
+            Destroy(erickChild.GetComponentInChildren<Gun>().gameObject);
+            GameObject ActualPistol = GameObject.Instantiate(pistol.gameObject, erickChild.transform);
+            playerMovement.FindIK(ActualPistol.GetComponent<Gun>().ikRight, ActualPistol.GetComponent<Gun>().ikLeft);
+            Destroy(this.gameObject);
+        }       
     }
 }

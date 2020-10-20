@@ -65,6 +65,10 @@ public class PlayerHealth : MonoBehaviour
 
     IEnumerator Flicker()
     {
+        if (gun != null)
+        {
+            gun.canShoot = false;
+        }
         for (int i = 0; i < 10; i++)
         {
             child.SetActive(false);

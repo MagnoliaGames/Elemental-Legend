@@ -12,8 +12,10 @@ public class ShotGun : Gun
         {
             Shoot();
             canShoot = false;
+            ammo -= 1;
             StartCoroutine(Reload());
         }
+        ChangeWeapon();
     }
 
     void Shoot()
