@@ -66,7 +66,7 @@ public class LevelManager : MonoBehaviour
 
         if (player.GetComponent<PlayerHealth>().muerto)
         {
-            SceneManager.LoadScene("Level 1");
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
             puntuacion = 0;
         }
     }
