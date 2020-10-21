@@ -31,19 +31,25 @@ public class BulletEnemy : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Turn") || other.CompareTag("Enemy") || other.CompareTag("Bullet"))
+        if (other.CompareTag("Turn") || other.CompareTag("Enemy") || other.CompareTag("Bullet") || other.CompareTag("Abejas"))
         {
-
+            Physics.IgnoreCollision(GetComponent<Collider>(), other);
         }
         else
         {
             speed = 0;
-            Destroy(projectile);
-            psExplode.Play();
+            if (psProjectile != null)
+            {
+                psProjectile.Stop();
+                Destroy(projectile);
+            }
+            if (psExplode != null)
+            {
+                psExplode.Play();
+            }
             StartCoroutine(DestroyBullet());
             if (other.CompareTag("Player"))
             {
-                //other.GetComponent<EnemyHealth>().health -= damage;
                 Destroy(GetComponent<Collider>());
             }
         }

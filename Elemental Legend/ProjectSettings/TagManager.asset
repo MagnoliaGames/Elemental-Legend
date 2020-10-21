@@ -13,6 +13,7 @@ TagManager:
   - BulletEnemy
   - Punch
   - Nativo
+  - Abejas
   layers:
   - Default
   - TransparentFX

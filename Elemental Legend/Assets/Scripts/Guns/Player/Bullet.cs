@@ -13,39 +13,45 @@ public class Bullet : MonoBehaviour
     public int damage = 10;
 
     // Start is called before the first frame update
-    void Awake()
+    void Start()
     {
         rb = GetComponent<Rigidbody>();
-        psExplode = explode.GetComponent<ParticleSystem>();
         psProjectile = projectile.GetComponent<ParticleSystem>();
+        psExplode = explode.GetComponent<ParticleSystem>();        
         psProjectile.Play();
     }
 
     // Update is called once per frame
     void FixedUpdate()
-    {
+    {     
         rb.velocity = new Vector3(transform.forward.x, transform.forward.y, transform.forward.z) * speed;
         StartCoroutine(DestroyBullet());
     }
 
     private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Turn") || other.CompareTag("Player") || other.CompareTag("Bullet"))
+    {       
+        if (other.CompareTag("Turn") || other.CompareTag("Player") || other.CompareTag("Bullet") || other.CompareTag("Abejas"))
         {
-
+            Physics.IgnoreCollision(GetComponent<Collider>(), other);
         }
         else
         {
             speed = 0;
-            psProjectile.Stop();
-            Destroy(psProjectile);
-            psExplode.Play();
+            if (psProjectile != null)
+            {
+                psProjectile.Stop();
+                Destroy(projectile);
+            }
+            if (psExplode != null)
+            {
+                psExplode.Play();
+            }
             StartCoroutine(DestroyBullet());
             if (other.CompareTag("Enemy"))
             {
                 Destroy(GetComponent<Collider>());
             }
-        }      
+        }
     }
     IEnumerator DestroyBullet()
     {

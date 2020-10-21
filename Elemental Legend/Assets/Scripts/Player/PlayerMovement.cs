@@ -121,16 +121,22 @@ public class PlayerMovement : MonoBehaviour
 
         if (gun == null)
         {
-            gun = GetComponentInChildren<Gun>();
+            gun = GetComponentInChildren<Gun>();           
         }
-        gun.gameObject.SetActive(true);
-        animator.SetLookAtPosition(gun.shot.position);
+        if (gun != null)
+        {
+            gun.gameObject.SetActive(true);
+            animator.SetLookAtPosition(gun.shot.position);
+        }        
 
         if (animator.GetCurrentAnimatorStateInfo(1).IsName("Granade"))
         {
             animator.SetLayerWeight(1, 0);
             animator.SetLayerWeight(2, 1);
-            gun.gameObject.SetActive(false);
+            if (gun != null)
+            {
+                gun.gameObject.SetActive(false);
+            }           
             animator.SetIKPositionWeight(AvatarIKGoal.RightHand, 0);
             animator.SetIKPositionWeight(AvatarIKGoal.LeftHand, 0);
             animator.SetIKRotationWeight(AvatarIKGoal.RightHand, 0);

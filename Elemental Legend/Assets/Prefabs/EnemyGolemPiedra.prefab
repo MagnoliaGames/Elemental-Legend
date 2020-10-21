@@ -2401,12 +2401,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9dad6a933ee04e419e9a711eb7270aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  puntuacion: 500
   health: 500
   muerto: 0
   bulletHit: 0
   granadeHitable: 0
-  drops:
-  - {fileID: 0}
 --- !u!1 &8050355425134627715
 GameObject:
   m_ObjectHideFlags: 0

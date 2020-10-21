@@ -1,0 +1,90 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2349272868643276360
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2349272868643276362}
+  - component: {fileID: 2349272868643276361}
+  - component: {fileID: 840570053613694854}
+  - component: {fileID: 2349272868643276363}
+  m_Layer: 0
+  m_Name: Flock Abejas
+  m_TagString: Abejas
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2349272868643276362
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2349272868643276360}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.11, y: 1.6, z: -1.523}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2349272868643276361
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2349272868643276360}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b5e587aba17b3d46bcbbbee59da05e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  destroy: 0
+  flockUnitPrefab: {fileID: 7780884284548931789, guid: cc63fe754331ce34c9eaf02f4c0dbfeb,
+    type: 3}
+  flockSize: 100
+  spawmBounds: {x: 1, y: 1, z: 1}
+  _minSpeed: 5
+  _maxSpeed: 5
+  _cohesionDistance: 0.5
+  _avoidanceDistance: 1
+  _aligementDistance: 1
+  _boundsDistance: 1
+  _obstacleDistance: 1
+  _cohesionWeight: 10
+  _avoidanceWeight: 1
+  _aligementWeight: 1
+  _boundsWeight: 10
+  _obstacleWeight: 10
+--- !u!114 &840570053613694854
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2349272868643276360}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d391cbb0cc5bbc45876a0975d043699, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movementSpeed: 1
+--- !u!135 &2349272868643276363
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2349272868643276360}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.6
+  m_Center: {x: 0, y: 0, z: 0}

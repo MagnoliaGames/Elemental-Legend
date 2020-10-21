@@ -6,6 +6,7 @@ public class EnemyHealth : MonoBehaviour
 {
     private Animator animator;
 
+    public int puntuacion;
     public int health = 100;
     public bool muerto, bulletHit, granadeHitable;
 
@@ -22,15 +23,22 @@ public class EnemyHealth : MonoBehaviour
         if (health <= 0 && !muerto)
         {
             muerto = true;
-            LevelManager.puntuacion += 100;
-            animator.SetBool("Muerto", true);
-            if (GetComponentInChildren<GunEnemy>())
+            LevelManager.puntuacion += puntuacion;
+            if (animator != null)
             {
-                Destroy(GetComponentInChildren<GunEnemy>().gameObject);
-            }           
-            Destroy(GetComponent<Rigidbody>());
-            Destroy(GetComponent<CapsuleCollider>());
-            StartCoroutine(Destroy());      
+                animator.SetBool("Muerto", true);
+                if (GetComponentInChildren<GunEnemy>())
+                {
+                    Destroy(GetComponentInChildren<GunEnemy>().gameObject);
+                }
+                Destroy(GetComponent<Rigidbody>());
+                Destroy(GetComponent<CapsuleCollider>());
+                StartCoroutine(Destroy());
+            }
+            else
+            {
+                Destroy(this.gameObject);
+            }
         }
 
         if (!granadeHitable)
@@ -43,9 +51,16 @@ public class EnemyHealth : MonoBehaviour
     {
         if (other.CompareTag("Bullet"))
         {
-            health -= other.GetComponent<Bullet>().damage;
-            bulletHit = true;
-            StartCoroutine(ResetBulletHit());
+            if (this.GetComponent<Panal>())
+            {
+                Physics.IgnoreCollision(GetComponent<Collider>(), other);
+            }
+            else
+            {
+                health -= other.GetComponent<Bullet>().damage;
+                bulletHit = true;
+                StartCoroutine(ResetBulletHit());
+            }           
         }
     }
 

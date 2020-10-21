@@ -10,7 +10,6 @@ public class PlayerHealth : MonoBehaviour
     private GameObject child;
     private Gun gun;
     private Animator animator;
-    private PlayerMovement playerMovement;
 
     // Start is called before the first frame update
     void Start()
@@ -21,7 +20,6 @@ public class PlayerHealth : MonoBehaviour
         child = GameObject.Find("Erick Child");
         gun = GetComponentInChildren<Gun>();
         animator = GetComponent<Animator>();
-        playerMovement = GetComponent<PlayerMovement>();
     }
 
     // Update is called once per frame
@@ -38,14 +36,12 @@ public class PlayerHealth : MonoBehaviour
             {
                 Destroy(gun.gameObject);
             }            
-            if (playerMovement.IsGrounded)
+            if (true)
             {
                 Destroy(GetComponent<PlayerMovement>());
                 animator.SetLayerWeight(1, 0);
                 animator.SetLayerWeight(2, 1);
                 animator.SetBool("muerto", true);
-                Destroy(GetComponent<Rigidbody>());
-                Destroy(GetComponent<Collider>());
             }                   
             StartCoroutine(Muerte());
         }
@@ -53,7 +49,7 @@ public class PlayerHealth : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (!invulnerable && (other.CompareTag("BulletEnemy") || other.CompareTag("Punch")))
+        if (!invulnerable && (other.CompareTag("BulletEnemy") || other.CompareTag("Punch") || other.CompareTag("Abejas")))
         {
             Debug.Log("Hit Player");
 

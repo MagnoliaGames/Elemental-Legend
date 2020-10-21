@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CajaSuministro : MonoBehaviour
 {
-    private GameObject player, erickChild;
+    private GameObject player, erickChild, gun;
 
     public GameObject[] drops;
 
@@ -12,6 +12,7 @@ public class CajaSuministro : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player");
         erickChild = GameObject.Find("Erick Child");
+        gun = erickChild.GetComponentInChildren<Gun>().gameObject;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -19,11 +20,14 @@ public class CajaSuministro : MonoBehaviour
 
         if (other.CompareTag("Player"))
         {
-            Destroy(erickChild.GetComponentInChildren<Gun>().gameObject);
-            GameObject drop = drops[Random.Range(0, drops.Length)];
-            GameObject ActualDrop = GameObject.Instantiate(drop.gameObject, erickChild.transform);
-            player.GetComponent<PlayerMovement>().FindIK(ActualDrop.GetComponent<Gun>().ikRight, ActualDrop.GetComponent<Gun>().ikLeft);
-            Destroy(this.gameObject);      
+            if (gun != null)
+            {
+                Destroy(gun);
+                GameObject drop = drops[Random.Range(0, drops.Length)];
+                GameObject ActualDrop = GameObject.Instantiate(drop.gameObject, erickChild.transform);
+                player.GetComponent<PlayerMovement>().FindIK(ActualDrop.GetComponent<Gun>().ikRight, ActualDrop.GetComponent<Gun>().ikLeft);
+                Destroy(this.gameObject);
+            }            
         }
     }
 }

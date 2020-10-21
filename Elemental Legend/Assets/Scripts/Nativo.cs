@@ -7,6 +7,7 @@ public class Nativo : MonoBehaviour
     private GameObject player;
     private Animator animator;
 
+    public int puntuacion;
     public bool libre;
     public float rangoInteraccion, movementSpeed;
 
@@ -31,7 +32,7 @@ public class Nativo : MonoBehaviour
         {
             transform.localEulerAngles = transform.localEulerAngles - new Vector3(0, -90, 0);
             animator.SetBool("Walk", true);
-            LevelManager.puntuacion += 1000;
+            LevelManager.puntuacion += puntuacion;
             StartCoroutine(DestroyNativo());
         }
         if (animator.GetBool("Walk"))

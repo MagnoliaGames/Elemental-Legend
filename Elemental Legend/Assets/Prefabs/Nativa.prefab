@@ -251,6 +251,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec9085fddd1df524a8c2c04924c73e57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  puntuacion: 50
   libre: 0
   rangoInteraccion: 2
   movementSpeed: 8
