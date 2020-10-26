@@ -14,13 +14,11 @@ public class CameraFollow : MonoBehaviour
 
     private void Awake()
     {
-        generalOffset = offsetGround;
-        transform.position = target.position + generalOffset;
-    }
-
-    private void Start()
-    {
         playerMovement = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
+        target.position = playerMovement.transform.position + cameraOffset;
+        target.rotation = GameObject.Find("Erick Parent").transform.rotation;
+        generalOffset = offsetGround;       
+        transform.position = target.TransformPoint(generalOffset);
     }
 
     private void FixedUpdate()
@@ -29,7 +27,6 @@ public class CameraFollow : MonoBehaviour
         {
             target.position = playerMovement.transform.position + cameraOffset;
             target.rotation = GameObject.Find("Erick Parent").transform.rotation;
-
             transform.LookAt(target);
             Vector3 desiredPosition = target.TransformPoint(generalOffset);
             Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed * Time.fixedDeltaTime);

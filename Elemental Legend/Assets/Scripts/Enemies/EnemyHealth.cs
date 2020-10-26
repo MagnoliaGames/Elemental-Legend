@@ -37,6 +37,11 @@ public class EnemyHealth : MonoBehaviour
             }
             else
             {
+                if (this.gameObject.GetComponent<Panal>().abejasLiberadas != null)
+                {
+                    Flock flock = GetComponent<Panal>().abejasLiberadas;
+                    flock.destroy = true;
+                }
                 Destroy(this.gameObject);
             }
         }

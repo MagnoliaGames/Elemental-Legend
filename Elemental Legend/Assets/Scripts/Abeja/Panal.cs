@@ -4,10 +4,9 @@ using UnityEngine;
 
 public class Panal : MonoBehaviour
 {
-    public Flock Abejas;
+    public Flock Abejas, abejasLiberadas;
     public float rangoInteraccion;
 
-    private Flock abejasLiberadas;
     private GameObject player;
     private bool liberadas;
 
@@ -38,15 +37,12 @@ public class Panal : MonoBehaviour
                 if (Vector3.Distance(transform.position, abejasLiberadas.transform.position) <= 0.1f)
                 {
                     abejasLiberadas.destroy = true;
-                }                
+                }
             }
             if (liberadas)
             {
                 liberadas = false;
             }
         }
-    }
-    private void OnTriggerEnter(Collider other)
-    {           
     }
 }
