@@ -47,9 +47,12 @@ public class GolemMovement : MonoBehaviour
 
         if (Vector3.Distance(transform.position, player.transform.position) <= 1)
         {
-            speed = 0;
-            animator.SetBool("Ataque", true);
-            rightHand.GetComponent<Collider>().enabled = true;  
+            if (!health.muerto)
+            {
+                speed = 0;
+                animator.SetBool("Ataque", true);
+                rightHand.GetComponent<Collider>().enabled = true;
+            }             
         }
         else
         {

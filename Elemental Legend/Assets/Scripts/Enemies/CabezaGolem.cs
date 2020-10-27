@@ -2,9 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AbejasMovement : MonoBehaviour
+public class CabezaGolem : MonoBehaviour
 {
     public float movementSpeed;
+
+    private void Update()
+    {
+        Move(GameObject.Find("General Anton"));
+    }
 
     public void Move(GameObject target)
     {

@@ -24,7 +24,7 @@ public class Panal : MonoBehaviour
         {            
             if (!liberadas && abejasLiberadas == null)
             {
-                abejasLiberadas = GameObject.Instantiate(Abejas, this.transform.position, new Quaternion());
+                abejasLiberadas = Instantiate(Abejas, this.transform.position, new Quaternion());
                 liberadas = true;
             }
             abejasLiberadas.GetComponent<AbejasMovement>().Move(player);

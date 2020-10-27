@@ -1,0 +1,62 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &95781917280489957
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 95781917280489959}
+  - component: {fileID: 95781917280489956}
+  m_Layer: 0
+  m_Name: Flock Fire
+  m_TagString: Abejas
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &95781917280489959
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 95781917280489957}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.11, y: 1.6, z: -1.523}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &95781917280489956
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 95781917280489957}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b5e587aba17b3d46bcbbbee59da05e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  destroy: 0
+  flockUnitPrefab: {fileID: 2451537088919370415, guid: 12a945bf289ef304d9855f6ed6eb879f,
+    type: 3}
+  flockSize: 100
+  spawmBounds: {x: 1, y: 1, z: 1}
+  _minSpeed: 5
+  _maxSpeed: 5
+  _cohesionDistance: 0.5
+  _avoidanceDistance: 1
+  _aligementDistance: 1
+  _boundsDistance: 1
+  _obstacleDistance: 1
+  _cohesionWeight: 10
+  _avoidanceWeight: 1
+  _aligementWeight: 1
+  _boundsWeight: 10
+  _obstacleWeight: 10

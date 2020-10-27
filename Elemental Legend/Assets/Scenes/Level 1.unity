@@ -387,6 +387,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 651091684334335248, guid: 0211e46ffb186104d887076205256cd9,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 651091684334335212, guid: 0211e46ffb186104d887076205256cd9,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1314,6 +1319,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 651091684334335248, guid: 0211e46ffb186104d887076205256cd9,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 651091684334335212, guid: 0211e46ffb186104d887076205256cd9,
         type: 3}
@@ -2668,6 +2678,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Panal
       objectReference: {fileID: 0}
+    - target: {fileID: 1107488570864862702, guid: 15f3f08108af08f4d88f7f94c21f2f21,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4108917989185845245, guid: 15f3f08108af08f4d88f7f94c21f2f21,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2951,8 +2966,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1138276435}
-  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: -0.7071068}
-  m_LocalPosition: {x: 135.9, y: -11.66, z: 125.2}
+  m_LocalRotation: {x: 0.2955477, y: 0.040678468, z: 0.012597134, w: -0.9543784}
+  m_LocalPosition: {x: 142.3327, y: -18.01573, z: 118.78825}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -3820,6 +3835,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Enemy (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 651091684334335248, guid: 0211e46ffb186104d887076205256cd9,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 651091684334335212, guid: 0211e46ffb186104d887076205256cd9,
         type: 3}
@@ -4758,6 +4778,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 651091684334335248, guid: 0211e46ffb186104d887076205256cd9,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 651091684334335212, guid: 0211e46ffb186104d887076205256cd9,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5454,6 +5479,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 233281055177078432, guid: 58015695173bb7a4ebfd81309d910472,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 233281055177078432, guid: 58015695173bb7a4ebfd81309d910472,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 233281055177078432, guid: 58015695173bb7a4ebfd81309d910472,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 233281054871878933, guid: 58015695173bb7a4ebfd81309d910472,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5558,21 +5598,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 233281055177078432, guid: 58015695173bb7a4ebfd81309d910472,
-        type: 3}
-      propertyPath: m_Color.r
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 233281055177078432, guid: 58015695173bb7a4ebfd81309d910472,
-        type: 3}
-      propertyPath: m_Color.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 233281055177078432, guid: 58015695173bb7a4ebfd81309d910472,
-        type: 3}
-      propertyPath: m_Color.b
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 233281055177078434, guid: 58015695173bb7a4ebfd81309d910472,
         type: 3}

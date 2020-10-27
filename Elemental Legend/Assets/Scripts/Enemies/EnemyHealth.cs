@@ -6,6 +6,7 @@ public class EnemyHealth : MonoBehaviour
 {
     private Animator animator;
 
+    public GameObject drop;
     public int puntuacion;
     public int health = 100;
     public bool muerto, bulletHit, granadeHitable;
@@ -78,6 +79,10 @@ public class EnemyHealth : MonoBehaviour
     IEnumerator Destroy()
     {
         yield return new WaitForSeconds(1.15f);
+        if (GetComponentInChildren<GolemMovement>() && drop != null)
+        {
+            Instantiate(drop, this.transform.position, GetComponentInChildren<GolemMovement>().transform.rotation);
+        }
         Destroy(this.gameObject);
     }
 
