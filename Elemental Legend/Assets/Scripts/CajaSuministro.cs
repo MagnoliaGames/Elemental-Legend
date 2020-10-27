@@ -15,7 +15,10 @@ public class CajaSuministro : MonoBehaviour
     }
     private void Update()
     {
-        gun = erickChild.GetComponentInChildren<Gun>().gameObject;
+        if (gun == null)
+        {
+            gun = erickChild.GetComponentInChildren<Gun>().gameObject;
+        }        
     }
 
     private void OnTriggerEnter(Collider other)
