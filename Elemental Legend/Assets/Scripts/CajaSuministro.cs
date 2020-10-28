@@ -15,10 +15,13 @@ public class CajaSuministro : MonoBehaviour
     }
     private void Update()
     {
-        if (gun == null)
+        if (player.GetComponent<PlayerHealth>().vidas > 0)
         {
-            gun = erickChild.GetComponentInChildren<Gun>().gameObject;
-        }        
+            if (gun == null)
+            {
+                gun = erickChild.GetComponentInChildren<Gun>().gameObject;
+            }
+        }          
     }
 
     private void OnTriggerEnter(Collider other)

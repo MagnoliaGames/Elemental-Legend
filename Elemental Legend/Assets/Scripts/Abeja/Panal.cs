@@ -18,7 +18,7 @@ public class Panal : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {     
         if (Vector3.Distance(player.transform.position, transform.position) <= rangoInteraccion)
         {            
