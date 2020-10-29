@@ -24,6 +24,15 @@ public class GolemMovement : MonoBehaviour
 
     void FixedUpdate()
     {
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        foreach (GameObject enemy in enemies)
+        {
+            if (enemy.GetComponent<Collider>())
+            {
+                Physics.IgnoreCollision(GetComponentInParent<Collider>(), enemy.GetComponent<Collider>());
+            }
+        }
+
         Vector3 relativePlayer = transform.InverseTransformPoint(player.transform.position);
         if (relativePlayer.z < 0.0f && turned)
         {

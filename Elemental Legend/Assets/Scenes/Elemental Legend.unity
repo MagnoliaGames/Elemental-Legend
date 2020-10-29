@@ -423,7 +423,7 @@ PrefabInstance:
     - target: {fileID: 233281054871878933, guid: 58015695173bb7a4ebfd81309d910472,
         type: 3}
       propertyPath: m_RootOrder
-      value: 18
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 233281054871878933, guid: 58015695173bb7a4ebfd81309d910472,
         type: 3}
@@ -528,6 +528,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &673865437 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2292642802278360276, guid: 58015695173bb7a4ebfd81309d910472,
+    type: 3}
+  m_PrefabInstance: {fileID: 673865433}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &673865438 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 782720418154270749, guid: 58015695173bb7a4ebfd81309d910472,
+    type: 3}
+  m_PrefabInstance: {fileID: 673865433}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -1101,7 +1113,7 @@ PrefabInstance:
     - target: {fileID: 3005026095000436505, guid: 7edf9a3e362a8c64aaad7223e1fc302d,
         type: 3}
       propertyPath: m_RootOrder
-      value: 17
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 3005026095000436505, guid: 7edf9a3e362a8c64aaad7223e1fc302d,
         type: 3}
@@ -1138,6 +1150,16 @@ PrefabInstance:
       propertyPath: textGranadas
       value: 
       objectReference: {fileID: 673865434}
+    - target: {fileID: 3005026095000436504, guid: 7edf9a3e362a8c64aaad7223e1fc302d,
+        type: 3}
+      propertyPath: inGame
+      value: 
+      objectReference: {fileID: 673865438}
+    - target: {fileID: 3005026095000436504, guid: 7edf9a3e362a8c64aaad7223e1fc302d,
+        type: 3}
+      propertyPath: pause
+      value: 
+      objectReference: {fileID: 673865437}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7edf9a3e362a8c64aaad7223e1fc302d, type: 3}
 --- !u!1 &1727425573

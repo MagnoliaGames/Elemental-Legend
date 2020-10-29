@@ -7,16 +7,18 @@ using UnityEngine.SceneManagement;
 public class LevelManager : MonoBehaviour
 {
     public static int puntuacion = 0;
-    public string puntuacionString = "Puntuación = ";
     public Text textScore, textVidas, textAmmo, textGranadas;
+    public GameObject inGame, pause;
     public static LevelManager levelManager;
 
+    private bool gameRunning;
     private GameObject player;
     private Gun gun;
 
     private void Awake()
     {
-        levelManager = this;      
+        levelManager = this;
+        gameRunning = true;
     }
 
     private void Start()
@@ -27,47 +29,77 @@ public class LevelManager : MonoBehaviour
 
     void Update()
     {
-        if (textVidas != null)
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
-            textVidas.text = "x" + player.GetComponent<PlayerHealth>().vidas.ToString();
+            ChangeGameRunningState();
         }
 
-        if (textScore != null)
+        if (gameRunning)
         {
-            textScore.text = puntuacionString + puntuacion.ToString();
-        }
-      
-        if (player.GetComponent<PlayerHealth>().vidas > 0)
-        {
-            if (gun == null)
-            {
-                gun = player.GetComponentInChildren<Gun>();
-            }           
+            inGame.SetActive(true);
+            pause.SetActive(false);
 
-            if (textAmmo != null && gun != null)
+            if (textVidas != null)
             {
-                if (gun.ammo == 0)
+                textVidas.text = "x" + player.GetComponent<PlayerHealth>().vidas.ToString();
+            }
+
+            if (textScore != null)
+            {
+                textScore.text = "Puntuación = " + puntuacion.ToString();
+            }
+
+            if (player.GetComponent<PlayerHealth>().vidas > 0)
+            {
+                if (gun == null)
                 {
-                    textAmmo.fontSize = 95;
-                    textAmmo.text = "∞";
+                    gun = player.GetComponentInChildren<Gun>();
                 }
-                else
+
+                if (textAmmo != null && gun != null)
                 {
-                    textAmmo.fontSize = 50;
-                    textAmmo.text = "x" + gun.ammo.ToString();
+                    if (gun.ammo == 0)
+                    {
+                        textAmmo.fontSize = 95;
+                        textAmmo.text = "∞";
+                    }
+                    else
+                    {
+                        textAmmo.fontSize = 50;
+                        textAmmo.text = "x" + gun.ammo.ToString();
+                    }
+                }
+
+                if (textGranadas != null)
+                {
+                    textGranadas.text = "x" + player.GetComponent<PlayerMovement>().granades.Count.ToString();
                 }
             }
 
-            if (textGranadas != null)
+            if (player.GetComponent<PlayerHealth>().muerto)
             {
-                textGranadas.text = "x" + player.GetComponent<PlayerMovement>().granades.Count.ToString();
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+                puntuacion = 0;
             }
         }
-
-        if (player.GetComponent<PlayerHealth>().muerto)
+        else
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-            puntuacion = 0;
+            inGame.SetActive(false);
+            pause.SetActive(true);
+        }
+    }
+
+    public void ChangeGameRunningState()
+    {
+        gameRunning = !gameRunning;
+
+        if (gameRunning)
+        {
+            Time.timeScale = 1;            
+        }
+        else
+        {
+            Time.timeScale = 0;
         }
     }
 }

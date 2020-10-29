@@ -541,6 +541,16 @@ PrefabInstance:
       propertyPath: textGranadas
       value: 
       objectReference: {fileID: 1035873255}
+    - target: {fileID: 3005026095000436504, guid: 7edf9a3e362a8c64aaad7223e1fc302d,
+        type: 3}
+      propertyPath: inGame
+      value: 
+      objectReference: {fileID: 1035873259}
+    - target: {fileID: 3005026095000436504, guid: 7edf9a3e362a8c64aaad7223e1fc302d,
+        type: 3}
+      propertyPath: pause
+      value: 
+      objectReference: {fileID: 1035873258}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7edf9a3e362a8c64aaad7223e1fc302d, type: 3}
 --- !u!1 &396561358
@@ -1439,6 +1449,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1035873258 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2292642802278360276, guid: 58015695173bb7a4ebfd81309d910472,
+    type: 3}
+  m_PrefabInstance: {fileID: 1035873253}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1035873259 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 782720418154270749, guid: 58015695173bb7a4ebfd81309d910472,
+    type: 3}
+  m_PrefabInstance: {fileID: 1035873253}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1056502504 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3084999980231819048, guid: 959c5980ad644834db52d7414b6db582,
