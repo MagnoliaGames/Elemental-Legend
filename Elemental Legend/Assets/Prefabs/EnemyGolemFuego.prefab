@@ -562,7 +562,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2168269784071819758}
   - component: {fileID: 2168269784071819757}
-  - component: {fileID: 2168269784071819756}
+  - component: {fileID: 7239533605796386913}
   - component: {fileID: 2168269784071819759}
   m_Layer: 0
   m_Name: EnemyGolemFuego
@@ -602,8 +602,8 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 122
   m_CollisionDetection: 0
---- !u!136 &2168269784071819756
-CapsuleCollider:
+--- !u!65 &7239533605796386913
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -612,10 +612,9 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.56
-  m_Height: 2.25
-  m_Direction: 1
-  m_Center: {x: 0, y: 1.13, z: 0}
+  serializedVersion: 2
+  m_Size: {x: 1, y: 2.2681327, z: 1}
+  m_Center: {x: 0, y: 1.120619, z: 0}
 --- !u!114 &2168269784071819759
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -29,8 +29,8 @@ public class GeneralAnton : MonoBehaviour
         if (golemsInScene.Count <= 0)
         {
             animator.SetBool("Ataque", true);
-            Instantiate(golems[0], spawns[Random.Range(0, 1)].position, new Quaternion());
-            Instantiate(golems[1], spawns[Random.Range(2, 3)].position, new Quaternion());
+            Instantiate(golems[0], spawns[Random.Range(0, 2)].position, new Quaternion());
+            Instantiate(golems[1], spawns[Random.Range(2, 4)].position, new Quaternion());
             StartCoroutine(ReloadAtaque());
         }  
         if (vidas <= 0)

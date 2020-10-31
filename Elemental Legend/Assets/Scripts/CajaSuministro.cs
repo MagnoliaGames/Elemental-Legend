@@ -32,7 +32,7 @@ public class CajaSuministro : MonoBehaviour
             if (gun != null)
             {
                 Destroy(gun);
-                GameObject drop = drops[Random.Range(0, drops.Length)];
+                GameObject drop = drops[Random.Range(0, drops.Length + 1)];
                 GameObject ActualDrop = GameObject.Instantiate(drop.gameObject, erickChild.transform);
                 player.GetComponent<PlayerMovement>().FindIK(ActualDrop.GetComponent<Gun>().ikRight, ActualDrop.GetComponent<Gun>().ikLeft);
                 Destroy(this.gameObject);                
