@@ -19,7 +19,7 @@ public class CajaSuministro : MonoBehaviour
         {
             if (gun == null)
             {
-                gun = erickChild.GetComponentInChildren<Gun>().gameObject;
+                gun = erickChild.GetComponentInChildren<Gun>().gameObject;              
             }
         }          
     }
@@ -29,10 +29,10 @@ public class CajaSuministro : MonoBehaviour
 
         if (other.CompareTag("Player"))
         {
-            if (gun != null)
+            if (/*gun != null*/ true)
             {
                 Destroy(gun);
-                GameObject drop = drops[Random.Range(0, drops.Length + 1)];
+                GameObject drop = drops[Random.Range(0, drops.Length)];
                 GameObject ActualDrop = GameObject.Instantiate(drop.gameObject, erickChild.transform);
                 player.GetComponent<PlayerMovement>().FindIK(ActualDrop.GetComponent<Gun>().ikRight, ActualDrop.GetComponent<Gun>().ikLeft);
                 Destroy(this.gameObject);                
