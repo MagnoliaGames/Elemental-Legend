@@ -9,8 +9,8 @@ public class GeneralAnton : MonoBehaviour
     private GameObject player;
 
     public int vidas;
-    public GameObject cetro;
-    public GameObject[] golems;
+    public GameObject cetro, jaula;
+    public GameObject[] golems, finalTurns;
     public Transform[] spawns;
 
     void Start()
@@ -73,6 +73,11 @@ public class GeneralAnton : MonoBehaviour
         {
             Destroy(golem);
         }
+        foreach (GameObject finalTurn in finalTurns)
+        {
+            finalTurn.SetActive(true);
+        }
+        Destroy(jaula);
         Instantiate(cetro, new Vector3(0, 2.4f, 0), new Quaternion());        
         Destroy(this.gameObject);
     }

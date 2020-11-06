@@ -655,10 +655,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   vidas: 4
-  cetro: {fileID: -927199367670048503, guid: 27fc859aa0ef2874e9fb03f79663abd9, type: 3}
+  cetro: {fileID: 5485573477318008746, guid: ceb4f144f0b7eeb40a3d307b6bd146f3, type: 3}
+  jaula: {fileID: 0}
   golems:
   - {fileID: 2168269784071819755, guid: 225b7c94c33a2df4e98f1c0e1c4334df, type: 3}
   - {fileID: 272304616419213265, guid: 7005ded56f9c4934fb1b3fd8071077f7, type: 3}
+  finalTurns: []
   spawns:
   - {fileID: 0}
   - {fileID: 0}

@@ -15,7 +15,7 @@ public class CajaSuministro : MonoBehaviour
     }
     private void Update()
     {
-        if (player.GetComponent<PlayerHealth>().vidas > 0)
+        if (player.GetComponent<PlayerHealth>().vidas > 0 && !player.GetComponent<PlayerMovement>().victoria)
         {
             if (gun == null)
             {
@@ -29,7 +29,7 @@ public class CajaSuministro : MonoBehaviour
 
         if (other.CompareTag("Player"))
         {
-            if (/*gun != null*/ true)
+            if (gun != null)
             {
                 Destroy(gun);
                 GameObject drop = drops[Random.Range(0, drops.Length)];

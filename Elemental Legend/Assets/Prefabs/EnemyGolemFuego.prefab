@@ -2502,7 +2502,7 @@ MonoBehaviour:
   rightHand: {fileID: 5100706437896938874}
   turned: 0
   warningState: 0
-  movementSpeed: 2.5
+  movementSpeed: 3.5
 --- !u!1 &7972168267212408923
 GameObject:
   m_ObjectHideFlags: 0

@@ -10,11 +10,11 @@ public class PlayerMovement : MonoBehaviour
     private CameraFollow cameraFollow;
     private Animator animator;
     private Gun gun;
-    public bool CanThrow;
+    private bool canThrow;
 
     public bool IsGrounded { get; private set; }
 
-    public bool turned, frente;
+    public bool turned, frente, victoria;
     public float gravityForce = -9.81f;
     public float movementSpeed = 10;
     public float jumpForce = 15;
@@ -29,119 +29,132 @@ public class PlayerMovement : MonoBehaviour
         cameraFollow = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraFollow>();
         animator = GetComponent<Animator>();
         IsGrounded = true;
-        CanThrow = true;
+        canThrow = true;
+        victoria = false;
     }
 
     void FixedUpdate()
     {
-        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
-        foreach (GameObject enemy in enemies)
+        if (!victoria)
         {
-            if (enemy.GetComponent<Collider>())
+            GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+            foreach (GameObject enemy in enemies)
             {
-                Physics.IgnoreCollision(GetComponent<Collider>(), enemy.GetComponent<Collider>());
-            }       
+                if (enemy.GetComponent<Collider>())
+                {
+                    Physics.IgnoreCollision(GetComponent<Collider>(), enemy.GetComponent<Collider>());
+                }
+            }
+
+            animator.SetBool("walk", false);
+
+            mouse.position = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, cameraFollow.generalOffset.x));
+            m_Rigidbody.AddForce(gravity, ForceMode.Acceleration);
+
+            if (Input.GetKey(KeyCode.D) && !animator.GetCurrentAnimatorStateInfo(1).IsName("Granade"))
+            {
+                animator.SetBool("walk", true);
+                frente = true;
+                if (turned)
+                {
+                    erickParent.transform.position -= transform.forward * movementSpeed * Time.fixedDeltaTime;
+                    animator.SetFloat("front", -1);
+                }
+                else
+                {
+                    erickParent.transform.position += transform.forward * movementSpeed * Time.fixedDeltaTime;
+                    animator.SetFloat("front", 1);
+                }
+            }
+            else if (Input.GetKey(KeyCode.A) && !animator.GetCurrentAnimatorStateInfo(1).IsName("Granade"))
+            {
+                animator.SetBool("walk", true);
+                frente = false;
+                if (turned)
+                {
+                    erickParent.transform.position += transform.forward * movementSpeed * Time.fixedDeltaTime;
+                    animator.SetFloat("front", 1);
+                }
+                else
+                {
+                    erickParent.transform.position -= transform.forward * movementSpeed * Time.fixedDeltaTime;
+                    animator.SetFloat("front", -1);
+                }
+            }
+            if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.W))
+            {
+                Jump();
+            }
+
+            if (Input.GetKeyDown(KeyCode.G) &&
+                granades.Count > 0 &&
+                !animator.GetCurrentAnimatorStateInfo(1).IsName("Granade"))
+            {
+                animator.SetBool("granade", true);
+
+                if (canThrow)
+                {
+                    StartCoroutine(ThrowGranade());
+
+                    canThrow = false;
+
+                    StartCoroutine(ReloadGranade());
+                }
+            }
+
+            LookMouse();
         }       
-
-        animator.SetBool("walk", false);    
-
-        mouse.position = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, cameraFollow.generalOffset.x));
-        m_Rigidbody.AddForce(gravity, ForceMode.Acceleration);
-
-        if (Input.GetKey(KeyCode.D) && !animator.GetCurrentAnimatorStateInfo(1).IsName("Granade"))
-        {
-            animator.SetBool("walk", true);            
-            frente = true;
-            if (turned)
-            {
-                erickParent.transform.position -= transform.forward * movementSpeed * Time.fixedDeltaTime;
-                animator.SetFloat("front", -1);
-            }
-            else
-            {
-                erickParent.transform.position += transform.forward * movementSpeed * Time.fixedDeltaTime;
-                animator.SetFloat("front", 1);
-            }           
-        }
-        else if (Input.GetKey(KeyCode.A) && !animator.GetCurrentAnimatorStateInfo(1).IsName("Granade"))
-        {
-            animator.SetBool("walk", true);
-            frente = false;
-            if (turned)
-            {
-                erickParent.transform.position += transform.forward * movementSpeed * Time.fixedDeltaTime;
-                animator.SetFloat("front", 1);
-            }
-            else
-            {
-                erickParent.transform.position -= transform.forward * movementSpeed * Time.fixedDeltaTime;
-                animator.SetFloat("front", -1);
-            }
-        }
-        if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.W))
-        {         
-            Jump();
-        }
-
-        if (Input.GetKeyDown(KeyCode.G) && 
-            granades.Count > 0 && 
-            !animator.GetCurrentAnimatorStateInfo(1).IsName("Granade"))
-        {           
-            animator.SetBool("granade", true);
-           
-            if (CanThrow)
-            {
-                StartCoroutine(ThrowGranade());
-                
-                CanThrow = false;
-
-                StartCoroutine(ReloadGranade());
-            }                    
-        }
-
-        LookMouse(); 
     }
 
     private void OnAnimatorIK()
     {
-        animator.SetLayerWeight(1, 1);
-        animator.SetLayerWeight(2, 0);
-
-        animator.SetIKPositionWeight(AvatarIKGoal.RightHand, 1);
-        animator.SetIKPositionWeight(AvatarIKGoal.LeftHand, 1);
-        animator.SetIKRotationWeight(AvatarIKGoal.RightHand, 1);
-        animator.SetIKRotationWeight(AvatarIKGoal.LeftHand, 1);
-
-        animator.SetIKPosition(AvatarIKGoal.RightHand, ikRight.position);
-        animator.SetIKPosition(AvatarIKGoal.LeftHand, ikLeft.position);
-        animator.SetIKRotation(AvatarIKGoal.RightHand, ikRight.rotation);
-        animator.SetIKRotation(AvatarIKGoal.LeftHand, ikLeft.rotation);
-
-        animator.SetLookAtWeight(1);        
-
-        if (gun == null)
+        if (!victoria)
         {
-            gun = GetComponentInChildren<Gun>();           
+            animator.SetLayerWeight(1, 1);
+            animator.SetLayerWeight(2, 0);
+
+            animator.SetIKPositionWeight(AvatarIKGoal.RightHand, 1);
+            animator.SetIKPositionWeight(AvatarIKGoal.LeftHand, 1);
+            animator.SetIKRotationWeight(AvatarIKGoal.RightHand, 1);
+            animator.SetIKRotationWeight(AvatarIKGoal.LeftHand, 1);
+
+            animator.SetIKPosition(AvatarIKGoal.RightHand, ikRight.position);
+            animator.SetIKPosition(AvatarIKGoal.LeftHand, ikLeft.position);
+            animator.SetIKRotation(AvatarIKGoal.RightHand, ikRight.rotation);
+            animator.SetIKRotation(AvatarIKGoal.LeftHand, ikLeft.rotation);
+
+            animator.SetLookAtWeight(1);
+
+            if (gun == null)
+            {
+                gun = GetComponentInChildren<Gun>();
+            }
+            if (gun != null)
+            {
+                gun.gameObject.SetActive(true);
+                animator.SetLookAtPosition(gun.shot.position);
+            }
+
+            if (animator.GetCurrentAnimatorStateInfo(1).IsName("Granade"))
+            {
+                animator.SetLayerWeight(1, 0);
+                animator.SetLayerWeight(2, 1);
+                if (gun != null)
+                {
+                    gun.gameObject.SetActive(false);
+                }
+                animator.SetIKPositionWeight(AvatarIKGoal.RightHand, 0);
+                animator.SetIKPositionWeight(AvatarIKGoal.LeftHand, 0);
+                animator.SetIKRotationWeight(AvatarIKGoal.RightHand, 0);
+                animator.SetIKRotationWeight(AvatarIKGoal.LeftHand, 0);
+                animator.SetLookAtWeight(0);
+            }
         }
-        if (gun != null)
-        {
-            gun.gameObject.SetActive(true);
-            animator.SetLookAtPosition(gun.shot.position);
-        }        
-
-        if (animator.GetCurrentAnimatorStateInfo(1).IsName("Granade"))
+        else
         {
             animator.SetLayerWeight(1, 0);
             animator.SetLayerWeight(2, 1);
-            if (gun != null)
-            {
-                gun.gameObject.SetActive(false);
-            }           
-            animator.SetIKPositionWeight(AvatarIKGoal.RightHand, 0);
-            animator.SetIKPositionWeight(AvatarIKGoal.LeftHand, 0);
-            animator.SetIKRotationWeight(AvatarIKGoal.RightHand, 0);
-            animator.SetIKRotationWeight(AvatarIKGoal.LeftHand, 0);
-            animator.SetLookAtWeight(0);
+            animator.SetBool("victoria", true);
         }
     }
 
@@ -169,15 +182,6 @@ public class PlayerMovement : MonoBehaviour
         }      
     }
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.CompareTag("Piso"))
-        {
-            animator.SetBool("jump", false);
-            IsGrounded = true;
-        }    
-    }
-
     public void FindIK(Transform Right, Transform Left)
     {
         ikRight = Right;
@@ -196,6 +200,35 @@ public class PlayerMovement : MonoBehaviour
     {
         yield return new WaitForSeconds(0.5f);
         animator.SetBool("granade", false);
-        CanThrow = true;
+        canThrow = true;
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Piso"))
+        {
+            animator.SetBool("jump", false);
+            IsGrounded = true;
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Cetro"))
+        {
+            GameObject cetroMano = Instantiate(other.gameObject, ikRight.position, new Quaternion());
+            cetroMano.transform.SetParent(GameObject.Find("QuickRigCharacter2_RightHand").transform);
+            Destroy(cetroMano.GetComponent<Collider>());
+            Destroy(gun.gameObject);
+            Destroy(other.gameObject);
+            transform.localEulerAngles = new Vector3(0, 90, 0);
+            victoria = true;
+        }
+        if (other.CompareTag("Victoria"))
+        {
+            Destroy(gun.gameObject);
+            transform.localEulerAngles = new Vector3(0, 90, 0);
+            victoria = true;
+        }
     }
 }

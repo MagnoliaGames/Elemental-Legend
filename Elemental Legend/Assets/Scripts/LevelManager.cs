@@ -14,6 +14,7 @@ public class LevelManager : MonoBehaviour
     private bool gameRunning;
     private GameObject player;
     private Gun gun;
+    private int count = 0;
 
     private void Awake()
     {
@@ -74,6 +75,16 @@ public class LevelManager : MonoBehaviour
                 {
                     textGranadas.text = "x" + player.GetComponent<PlayerMovement>().granades.Count.ToString();
                 }
+
+                if (player.GetComponent<PlayerMovement>().victoria)
+                {
+                    if (count == 0)
+                    {
+                        puntuacion *= player.GetComponent<PlayerHealth>().vidas;
+                        count += 1;
+                    }
+                    StartCoroutine(LoadScene());
+                }
             }
 
             if (player.GetComponent<PlayerHealth>().muerto)
@@ -86,7 +97,7 @@ public class LevelManager : MonoBehaviour
         {
             inGame.SetActive(false);
             pause.SetActive(true);
-        }
+        }        
     }
 
     public void ChangeGameRunningState()
@@ -101,5 +112,46 @@ public class LevelManager : MonoBehaviour
         {
             Time.timeScale = 0;
         }
+    }
+
+    IEnumerator LoadScene(){        
+        yield return new WaitForSeconds(2f);        
+        if (SceneManager.GetActiveScene().name == "Level 1")
+        {            
+            if (DataBase.GetPuntuacion(1) < puntuacion)
+            {
+                DataBase.SetPuntuacion(1, puntuacion);
+            }
+            puntuacion = 0;
+            SceneManager.LoadScene(2);
+        }
+        if (SceneManager.GetActiveScene().name == "Level 2")
+        {
+            if (DataBase.GetPuntuacion(2) < puntuacion)
+            {
+                DataBase.SetPuntuacion(2, puntuacion);
+            }
+            puntuacion = 0;
+            SceneManager.LoadScene(3);
+        }
+        if (SceneManager.GetActiveScene().name == "Level 3")
+        {
+            if (DataBase.GetPuntuacion(3) < puntuacion)
+            {
+                DataBase.SetPuntuacion(3, puntuacion);
+            }
+            puntuacion = 0;
+            SceneManager.LoadScene(4);
+        }
+        if (SceneManager.GetActiveScene().name == "Level 4")
+        {
+            if (DataBase.GetPuntuacion(4) < puntuacion)
+            {
+                DataBase.SetPuntuacion(4, puntuacion);
+            }
+            puntuacion = 0;
+            SceneManager.LoadScene(0);
+        }
+        count = 0;
     }
 }
