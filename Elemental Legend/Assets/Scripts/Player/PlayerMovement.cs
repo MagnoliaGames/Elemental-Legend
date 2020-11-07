@@ -216,11 +216,10 @@ public class PlayerMovement : MonoBehaviour
     {
         if (other.CompareTag("Cetro"))
         {
-            GameObject cetroMano = Instantiate(other.gameObject, ikRight.position, new Quaternion());
-            cetroMano.transform.SetParent(GameObject.Find("QuickRigCharacter2_RightHand").transform);
-            Destroy(cetroMano.GetComponent<Collider>());
+            Destroy(other.GetComponent<Collider>());
+            other.transform.position = ikRight.position + new Vector3(0.1f, 0, 0.1f);
+            other.transform.SetParent(GameObject.Find("QuickRigCharacter2_RightHand").transform, true);
             Destroy(gun.gameObject);
-            Destroy(other.gameObject);
             transform.localEulerAngles = new Vector3(0, 90, 0);
             victoria = true;
         }

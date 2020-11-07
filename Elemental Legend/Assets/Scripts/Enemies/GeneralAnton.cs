@@ -72,13 +72,19 @@ public class GeneralAnton : MonoBehaviour
         foreach (GameObject golem in golemsInScene)
         {
             Destroy(golem);
-        }
+        }               
+        Destroy(jaula);
+        Instantiate(cetro, new Vector3(0, 2.4f, 0), new Quaternion());
         foreach (GameObject finalTurn in finalTurns)
         {
-            finalTurn.SetActive(true);
-        }
-        Destroy(jaula);
-        Instantiate(cetro, new Vector3(0, 2.4f, 0), new Quaternion());        
-        Destroy(this.gameObject);
+            if (Vector3.Distance(player.transform.position, finalTurn.transform.position) > 2)
+            {
+                finalTurn.SetActive(true);
+            }
+            if (finalTurn.activeSelf)
+            {
+                Destroy(this.gameObject);
+            }
+        }        
     }
 }
