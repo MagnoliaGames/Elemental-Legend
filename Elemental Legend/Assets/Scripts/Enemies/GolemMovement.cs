@@ -61,6 +61,11 @@ public class GolemMovement : MonoBehaviour
                 speed = 0;
                 animator.SetBool("Ataque", true);
                 rightHand.GetComponent<Collider>().enabled = true;
+                AudioSource audio = rightHand.GetComponent<AudioSource>();
+                if (!audio.isPlaying)
+                {
+                    audio.Play();
+                }
             }             
         }
         else

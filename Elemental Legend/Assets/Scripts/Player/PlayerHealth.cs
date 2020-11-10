@@ -51,11 +51,13 @@ public class PlayerHealth : MonoBehaviour
     {
         if (!invulnerable && (other.CompareTag("BulletEnemy") || other.CompareTag("Punch") || other.CompareTag("Abejas")))
         {
-            Debug.Log("Hit Player");
-
             vidas -= 1;           
             StartCoroutine(Flicker());
             invulnerable = true;
+        }
+        if (other.CompareTag("Fall"))
+        {
+            vidas = 0;
         }
     }
 

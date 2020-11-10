@@ -56,6 +56,8 @@ public class Bullet : MonoBehaviour
     IEnumerator DestroyBullet()
     {
         yield return new WaitForSeconds(destroyTime);
+        Destroy(gameObject.GetComponent<Collider>());
+        yield return new WaitForSeconds(1);
         Destroy(gameObject);
     }
 }

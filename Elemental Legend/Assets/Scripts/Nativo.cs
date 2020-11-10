@@ -30,6 +30,7 @@ public class Nativo : MonoBehaviour
 
         if (libre && !animator.GetBool("Walk"))
         {
+            GetComponent<AudioSource>().Play();
             transform.localEulerAngles = transform.localEulerAngles - new Vector3(0, -90, 0);
             animator.SetBool("Walk", true);
             LevelManager.puntuacion += puntuacion;

@@ -37,6 +37,8 @@ public class PlayerMovement : MonoBehaviour
     {
         if (!victoria)
         {
+            Caminar();
+
             GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
             foreach (GameObject enemy in enemies)
             {
@@ -44,43 +46,8 @@ public class PlayerMovement : MonoBehaviour
                 {
                     Physics.IgnoreCollision(GetComponent<Collider>(), enemy.GetComponent<Collider>());
                 }
-            }
-
-            animator.SetBool("walk", false);
-
-            mouse.position = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, cameraFollow.generalOffset.x));
-            m_Rigidbody.AddForce(gravity, ForceMode.Acceleration);
-
-            if (Input.GetKey(KeyCode.D) && !animator.GetCurrentAnimatorStateInfo(1).IsName("Granade"))
-            {
-                animator.SetBool("walk", true);
-                frente = true;
-                if (turned)
-                {
-                    erickParent.transform.position -= transform.forward * movementSpeed * Time.fixedDeltaTime;
-                    animator.SetFloat("front", -1);
-                }
-                else
-                {
-                    erickParent.transform.position += transform.forward * movementSpeed * Time.fixedDeltaTime;
-                    animator.SetFloat("front", 1);
-                }
-            }
-            else if (Input.GetKey(KeyCode.A) && !animator.GetCurrentAnimatorStateInfo(1).IsName("Granade"))
-            {
-                animator.SetBool("walk", true);
-                frente = false;
-                if (turned)
-                {
-                    erickParent.transform.position += transform.forward * movementSpeed * Time.fixedDeltaTime;
-                    animator.SetFloat("front", 1);
-                }
-                else
-                {
-                    erickParent.transform.position -= transform.forward * movementSpeed * Time.fixedDeltaTime;
-                    animator.SetFloat("front", -1);
-                }
-            }
+            }           
+           
             if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.W))
             {
                 Jump();
@@ -152,6 +119,8 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
+            AudioSource audio = GetComponentInChildren<AudioSource>();
+            Destroy(audio);
             animator.SetLayerWeight(1, 0);
             animator.SetLayerWeight(2, 1);
             animator.SetBool("victoria", true);
@@ -170,6 +139,67 @@ public class PlayerMovement : MonoBehaviour
             turned = false;
             transform.localEulerAngles = new Vector3(transform.localEulerAngles.x, transform.localEulerAngles.y + 180, transform.localEulerAngles.z);
         }
+    }
+
+    private void Caminar()
+    {
+        animator.SetBool("walk", false);
+
+        mouse.position = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, cameraFollow.generalOffset.x));
+        m_Rigidbody.AddForce(gravity, ForceMode.Acceleration);
+
+        AudioSource audio = GetComponentInChildren<AudioSource>();
+        if (Input.GetKey(KeyCode.D) && !animator.GetCurrentAnimatorStateInfo(1).IsName("Granade"))
+        {
+            if (!audio.isPlaying && IsGrounded)
+            {
+                audio.Play();
+            }
+            if (audio.isPlaying && !IsGrounded)
+            {
+                audio.Stop();
+            }
+            animator.SetBool("walk", true);
+            frente = true;
+            if (turned)
+            {
+                erickParent.transform.position -= transform.forward * movementSpeed * Time.fixedDeltaTime;
+                animator.SetFloat("front", -1);
+            }
+            else
+            {
+                erickParent.transform.position += transform.forward * movementSpeed * Time.fixedDeltaTime;
+                animator.SetFloat("front", 1);
+            }
+        }
+        else if (Input.GetKey(KeyCode.A) && !animator.GetCurrentAnimatorStateInfo(1).IsName("Granade"))
+        {
+            if (!audio.isPlaying && IsGrounded)
+            {
+                audio.Play();
+            }
+            if (audio.isPlaying && !IsGrounded)
+            {
+                audio.Stop();
+            }
+            animator.SetBool("walk", true);
+            frente = false;
+            if (turned)
+            {
+                erickParent.transform.position += transform.forward * movementSpeed * Time.fixedDeltaTime;
+                animator.SetFloat("front", 1);
+            }
+            else
+            {
+                erickParent.transform.position -= transform.forward * movementSpeed * Time.fixedDeltaTime;
+                animator.SetFloat("front", -1);
+            }
+        }
+        else
+        {
+            GetComponent<AudioSource>().Stop();
+        }
+
     }
 
     private void Jump()

@@ -30,14 +30,10 @@ public class Molotov : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.collider.CompareTag("Player"))
-        {
-
-        }
-        else
-        {
+        if (!collision.collider.CompareTag("Player"))
+        {          
             psFire.Stop();
-            psExplode.Play();
+            psExplode.Play();                        
             GameObject.Find("MolotovChild").GetComponent<MeshRenderer>().enabled = false;
             Collider[] colliders = Physics.OverlapSphere(transform.position, explosionRadius);
             foreach (Collider nearbyObject in colliders)
@@ -66,6 +62,11 @@ public class Molotov : MonoBehaviour
 
     IEnumerator DestroyMolotov()
     {
+        AudioSource audio = GetComponentInChildren<AudioSource>();
+        if (!audio.isPlaying && audio != null)
+        {
+            audio.Play();
+        }
         yield return new WaitForSeconds(2);
         Destroy(gameObject);
     }

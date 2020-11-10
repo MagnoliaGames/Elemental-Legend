@@ -35,6 +35,11 @@ public class Granade : MonoBehaviour
     {
         yield return new WaitForSeconds(timeExplosion);
         psExplode.Play();
+        AudioSource audio = GetComponentInChildren<AudioSource>();
+        if (!audio.isPlaying)
+        {
+            audio.Play();
+        }
         Collider[] colliders = Physics.OverlapSphere(transform.position, explosionRadius);
         foreach (Collider nearbyObject in colliders)
         {

@@ -78,6 +78,10 @@ public class EnemyHealth : MonoBehaviour
 
     IEnumerator Destroy()
     {
+        if (GetComponentInChildren<GolemMovement>())
+        {
+            GetComponent<AudioSource>().Play();
+        }
         yield return new WaitForSeconds(1.15f);
         if (GetComponentInChildren<GolemMovement>() && drop != null)
         {
