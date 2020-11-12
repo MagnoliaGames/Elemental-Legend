@@ -48,7 +48,7 @@ public class BulletEnemy : MonoBehaviour
                 psExplode.Play();
             }
             StartCoroutine(DestroyBullet());
-            if (other.CompareTag("Player"))
+            if (other.CompareTag("PlayerTurns"))
             {
                 Destroy(GetComponent<Collider>());
             }

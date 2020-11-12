@@ -30,7 +30,7 @@ public class Molotov : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (!collision.collider.CompareTag("Player"))
+        if (!collision.collider.CompareTag("PlayerTurns"))
         {          
             psFire.Stop();
             psExplode.Play();                        

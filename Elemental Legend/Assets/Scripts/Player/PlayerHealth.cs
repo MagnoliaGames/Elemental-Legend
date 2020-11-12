@@ -19,7 +19,7 @@ public class PlayerHealth : MonoBehaviour
         invulnerable = false;
         child = GameObject.Find("Erick Child");
         gun = GetComponentInChildren<Gun>();
-        animator = GetComponent<Animator>();
+        animator = GetComponentInChildren<Animator>();
     }
 
     // Update is called once per frame
@@ -36,13 +36,10 @@ public class PlayerHealth : MonoBehaviour
             {
                 Destroy(gun.gameObject);
             }            
-            if (true)
-            {
-                Destroy(GetComponent<PlayerMovement>());
-                animator.SetLayerWeight(1, 0);
-                animator.SetLayerWeight(2, 1);
-                animator.SetBool("muerto", true);
-            }                   
+            Destroy(GetComponentInChildren<PlayerMovement>());
+            animator.SetLayerWeight(1, 0);
+            animator.SetLayerWeight(2, 1);
+            animator.SetBool("muerto", true);                   
             StartCoroutine(Muerte());
         }
     }

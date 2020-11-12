@@ -30,7 +30,7 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {       
-        if (other.CompareTag("Turn") || other.CompareTag("Player") || other.CompareTag("Bullet") || other.CompareTag("Abejas"))
+        if (other.CompareTag("Turn") || other.CompareTag("PlayerTurns") || other.CompareTag("Bullet") || other.CompareTag("Abejas"))
         {
             Physics.IgnoreCollision(GetComponent<Collider>(), other);
         }

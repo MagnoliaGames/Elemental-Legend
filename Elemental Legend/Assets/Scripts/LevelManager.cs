@@ -42,7 +42,7 @@ public class LevelManager : MonoBehaviour
 
             if (textVidas != null)
             {
-                textVidas.text = "x" + player.GetComponent<PlayerHealth>().vidas.ToString();
+                textVidas.text = "x" + player.GetComponentInParent<PlayerHealth>().vidas.ToString();
             }
 
             if (textScore != null)
@@ -50,7 +50,7 @@ public class LevelManager : MonoBehaviour
                 textScore.text = "Puntuación = " + puntuacion.ToString();
             }
 
-            if (player.GetComponent<PlayerHealth>().vidas > 0)
+            if (player.GetComponentInParent<PlayerHealth>().vidas > 0)
             {
                 if (gun == null)
                 {
@@ -80,14 +80,14 @@ public class LevelManager : MonoBehaviour
                 {
                     if (count == 0)
                     {
-                        puntuacion *= player.GetComponent<PlayerHealth>().vidas;
+                        puntuacion *= player.GetComponentInParent<PlayerHealth>().vidas;
                         count += 1;
                     }
                     StartCoroutine(LoadScene());
                 }
             }
 
-            if (player.GetComponent<PlayerHealth>().muerto)
+            if (player.GetComponentInParent<PlayerHealth>().muerto)
             {
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
                 puntuacion = 0;

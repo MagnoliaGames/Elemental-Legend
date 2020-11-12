@@ -15,7 +15,7 @@ public class CajaSuministro : MonoBehaviour
     }
     private void Update()
     {
-        if (player.GetComponent<PlayerHealth>().vidas > 0 && !player.GetComponent<PlayerMovement>().victoria)
+        if (player.GetComponentInParent<PlayerHealth>().vidas > 0 && !player.GetComponent<PlayerMovement>().victoria)
         {
             if (gun == null)
             {
@@ -27,7 +27,7 @@ public class CajaSuministro : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
 
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("PlayerTurns"))
         {
             if (gun != null)
             {

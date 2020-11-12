@@ -17,6 +17,7 @@ TagManager:
   - Cetro
   - Victoria
   - Fall
+  - PlayerTurns
   layers:
   - Default
   - TransparentFX

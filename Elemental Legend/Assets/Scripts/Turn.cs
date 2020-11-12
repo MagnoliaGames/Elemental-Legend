@@ -17,17 +17,12 @@ public class Turn : MonoBehaviour
              
     }
 
-    private void Update()
-    {
-        
-    }
-
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player")  && other.GetType() == typeof(CapsuleCollider))
+        if (other.CompareTag("PlayerTurns")  && other.GetType() == typeof(CapsuleCollider))
         {
             StartCoroutine(NormalCamera());
-            var playerMovement = other.GetComponent<PlayerMovement>();
+            var playerMovement = other.GetComponentInChildren<PlayerMovement>();
             if (inverse && playerMovement.frente )
             {               
                 GameObject.Find("Erick Parent").transform.localEulerAngles = new Vector3(0, GameObject.Find("Erick Parent").transform.localEulerAngles.y + degrees, 0);

@@ -12,8 +12,8 @@ public class PlayerMovement : MonoBehaviour
     private Gun gun;
     private bool canThrow;
 
-    public bool IsGrounded { get; private set; }
 
+    public bool IsGrounded;
     public bool turned, frente, victoria;
     public float gravityForce = -9.81f;
     public float movementSpeed = 10;
@@ -24,7 +24,7 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         erickParent = GameObject.Find("Erick Parent");
-        m_Rigidbody = GetComponent<Rigidbody>();
+        m_Rigidbody = GetComponentInParent<Rigidbody>();
         gravity = new Vector3(0, gravityForce, 0);
         cameraFollow = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraFollow>();
         animator = GetComponent<Animator>();
@@ -44,7 +44,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 if (enemy.GetComponent<Collider>())
                 {
-                    Physics.IgnoreCollision(GetComponent<Collider>(), enemy.GetComponent<Collider>());
+                    Physics.IgnoreCollision(GetComponentInParent<Collider>(), enemy.GetComponent<Collider>());
                 }
             }           
            
@@ -231,33 +231,5 @@ public class PlayerMovement : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         animator.SetBool("granade", false);
         canThrow = true;
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.CompareTag("Piso"))
-        {
-            animator.SetBool("jump", false);
-            IsGrounded = true;
-        }
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Cetro"))
-        {
-            Destroy(other.GetComponent<Collider>());
-            other.transform.position = ikRight.position + new Vector3(0.1f, 0, 0.1f);
-            other.transform.SetParent(GameObject.Find("QuickRigCharacter2_RightHand").transform, true);
-            Destroy(gun.gameObject);
-            transform.localEulerAngles = new Vector3(0, 90, 0);
-            victoria = true;
-        }
-        if (other.CompareTag("Victoria"))
-        {
-            Destroy(gun.gameObject);
-            transform.localEulerAngles = new Vector3(0, 90, 0);
-            victoria = true;
-        }
-    }
+    }    
 }
