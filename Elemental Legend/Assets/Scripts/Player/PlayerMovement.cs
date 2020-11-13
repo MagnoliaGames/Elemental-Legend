@@ -229,6 +229,7 @@ public class PlayerMovement : MonoBehaviour
     IEnumerator ReloadGranade()
     {
         yield return new WaitForSeconds(0.5f);
+        gun.canShoot = true;
         animator.SetBool("granade", false);
         canThrow = true;
     }    

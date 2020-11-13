@@ -5,6 +5,7 @@ using UnityEngine;
 public class EnemyHealth : MonoBehaviour
 {
     private Animator animator;
+    private bool hasPlayed;
 
     public GameObject drop;
     public int puntuacion;
@@ -16,6 +17,7 @@ public class EnemyHealth : MonoBehaviour
         muerto = false;
         bulletHit = false;
         granadeHitable = true;
+        hasPlayed = false;
         animator = GetComponentInChildren<Animator>();
     }
 
@@ -24,12 +26,17 @@ public class EnemyHealth : MonoBehaviour
         if (health <= 0 && !muerto)
         {
             muerto = true;
-            LevelManager.puntuacion += puntuacion;
+            LevelManager.puntuacion += puntuacion;           
             if (animator != null)
             {
                 animator.SetBool("Muerto", true);
                 if (GetComponentInChildren<GunEnemy>())
                 {
+                    if (!GetComponent<AudioSource>().isPlaying && !hasPlayed)
+                    {
+                        GetComponent<AudioSource>().Play();
+                        hasPlayed = true;
+                    }
                     Destroy(GetComponentInChildren<GunEnemy>().gameObject);
                 }
                 Destroy(GetComponent<Rigidbody>());

@@ -10,6 +10,7 @@ public class PlayerHealth : MonoBehaviour
     private GameObject child;
     private Gun gun;
     private Animator animator;
+    private bool hasPlayed;
 
     // Start is called before the first frame update
     void Start()
@@ -17,6 +18,7 @@ public class PlayerHealth : MonoBehaviour
         vidas = 3;
         muerto = false;
         invulnerable = false;
+        hasPlayed = false;
         child = GameObject.Find("Erick Child");
         gun = GetComponentInChildren<Gun>();
         animator = GetComponentInChildren<Animator>();
@@ -39,7 +41,12 @@ public class PlayerHealth : MonoBehaviour
             Destroy(GetComponentInChildren<PlayerMovement>());
             animator.SetLayerWeight(1, 0);
             animator.SetLayerWeight(2, 1);
-            animator.SetBool("muerto", true);                   
+            animator.SetBool("muerto", true);
+            if (!GetComponent<AudioSource>().isPlaying && !hasPlayed)
+            {
+                GetComponent<AudioSource>().Play();
+                hasPlayed = true;
+            }
             StartCoroutine(Muerte());
         }
     }
@@ -79,7 +86,7 @@ public class PlayerHealth : MonoBehaviour
     }
 
     IEnumerator Muerte()
-    {
+    {        
         yield return new WaitForSeconds(2);
         muerto = true;
     }
