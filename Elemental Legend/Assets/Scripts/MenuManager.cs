@@ -6,13 +6,13 @@ using UnityEngine.SceneManagement;
 
 public class MenuManager : MonoBehaviour
 {
-    public GameObject score, mainMenu;
+    public GameObject levels, mainMenu;
     public Text puntuacionLevel1, puntuacionLevel2, puntuacionLevel3, puntuacionLevel4;
 
     private void Awake()
     {
         mainMenu.SetActive(true);
-        score.SetActive(false);
+        levels.SetActive(false);
 
         puntuacionLevel1.text = DataBase.GetPuntuacion(1).ToString();
         puntuacionLevel2.text = DataBase.GetPuntuacion(2).ToString();
@@ -25,16 +25,21 @@ public class MenuManager : MonoBehaviour
         SceneManager.LoadScene(1);
     }
 
-    public void Score()
+    public void LoadLevel(int num)
+    {
+        SceneManager.LoadScene(num);
+    }
+
+    public void Levels()
     {
         mainMenu.SetActive(false);
-        score.SetActive(true);
+        levels.SetActive(true);
     }
 
     public void BackMenu()
     {
         mainMenu.SetActive(true);
-        score.SetActive(false);
+        levels.SetActive(false);
     }
 
     public void Exit()

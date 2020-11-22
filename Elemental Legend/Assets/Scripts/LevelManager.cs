@@ -154,4 +154,15 @@ public class LevelManager : MonoBehaviour
         }
         count = 0;
     }
+
+    public void BackMenu()
+    {
+        ChangeGameRunningState();
+        SceneManager.LoadScene(0);
+    }
+
+    public void BackGame()
+    {
+        ChangeGameRunningState();
+    }
 }
