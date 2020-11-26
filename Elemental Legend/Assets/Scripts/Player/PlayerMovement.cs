@@ -220,7 +220,7 @@ public class PlayerMovement : MonoBehaviour
 
     IEnumerator ThrowGranade()
     {
-        yield return new WaitForSeconds(0.8f);
+        yield return new WaitForSeconds(0.4f);
         GameObject granade = granades[granades.Count - 1];
         granades.RemoveAt(granades.Count - 1);
         Instantiate(granade, ikRight.position, new Quaternion());
