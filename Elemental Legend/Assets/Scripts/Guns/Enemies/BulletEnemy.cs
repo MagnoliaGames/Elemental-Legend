@@ -31,7 +31,7 @@ public class BulletEnemy : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Turn") || other.CompareTag("Enemy") || other.CompareTag("Bullet") || other.CompareTag("Abejas"))
+        if (other.CompareTag("Turn") || other.CompareTag("Enemy") || other.CompareTag("Bullet") || other.CompareTag("Abejas") || other.CompareTag("Victoria"))
         {
             Physics.IgnoreCollision(GetComponent<Collider>(), other);
         }
