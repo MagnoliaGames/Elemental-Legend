@@ -7,6 +7,7 @@ public class CajaSuministro : MonoBehaviour
     private GameObject player, erickChild, gun;
 
     public GameObject[] drops;
+    public GameObject molotov, granade;
 
     private void Start()
     {
@@ -20,7 +21,7 @@ public class CajaSuministro : MonoBehaviour
             if (gun == null)
             {
                 gun = erickChild.GetComponentInChildren<Gun>().gameObject;              
-            }
+            }           
         }          
     }
 
@@ -36,7 +37,15 @@ public class CajaSuministro : MonoBehaviour
                 GameObject ActualDrop = GameObject.Instantiate(drop.gameObject, erickChild.transform);
                 player.GetComponent<PlayerMovement>().FindIK(ActualDrop.GetComponent<Gun>().ikRight, ActualDrop.GetComponent<Gun>().ikLeft);
                 Destroy(this.gameObject);                
-            }            
+            }
+            player.GetComponent<PlayerMovement>().granades.Clear();
+            player.GetComponent<PlayerMovement>().granades.AddRange(new List<GameObject>
+            {
+                granade,
+                molotov,
+                granade,
+                molotov,
+            });
         }
     }
 }

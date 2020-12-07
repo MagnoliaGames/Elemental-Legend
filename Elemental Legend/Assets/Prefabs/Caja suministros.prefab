@@ -61,6 +61,8 @@ MonoBehaviour:
   drops:
   - {fileID: 6997321667252313912, guid: 489573c441a560a43b6c0979eb86ae8a, type: 3}
   - {fileID: 5538803304633820017, guid: 63811a2faff89884f8f9355f375e245f, type: 3}
+  molotov: {fileID: 7920948256129992795, guid: 0b2cd2f0c924dc14cb81fc4429003d68, type: 3}
+  granade: {fileID: 5819635613094442267, guid: 5da761422c5e77944a8b07f08ad131fe, type: 3}
 --- !u!1001 &388698507631420170
 PrefabInstance:
   m_ObjectHideFlags: 0
