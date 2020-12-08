@@ -123,7 +123,7 @@ public class LevelManager : MonoBehaviour
                 DataBase.SetPuntuacion(1, puntuacion);
             }
             puntuacion = 0;
-            SceneManager.LoadScene(2);
+            SceneManager.LoadScene(3);
         }
         if (SceneManager.GetActiveScene().name == "Level 2")
         {
@@ -132,7 +132,7 @@ public class LevelManager : MonoBehaviour
                 DataBase.SetPuntuacion(2, puntuacion);
             }
             puntuacion = 0;
-            SceneManager.LoadScene(3);
+            SceneManager.LoadScene(4);
         }
         if (SceneManager.GetActiveScene().name == "Level 3")
         {
@@ -141,7 +141,7 @@ public class LevelManager : MonoBehaviour
                 DataBase.SetPuntuacion(3, puntuacion);
             }
             puntuacion = 0;
-            SceneManager.LoadScene(4);
+            SceneManager.LoadScene(5);
         }
         if (SceneManager.GetActiveScene().name == "Level 4")
         {

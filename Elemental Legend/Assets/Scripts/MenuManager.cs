@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class MenuManager : MonoBehaviour
 {
-    public GameObject levels, mainMenu;
+    public GameObject levels, mainMenu, credits;
     public Text puntuacionLevel1, puntuacionLevel2, puntuacionLevel3, puntuacionLevel4;
 
     private void Awake()
@@ -36,10 +36,24 @@ public class MenuManager : MonoBehaviour
         levels.SetActive(true);
     }
 
+    public void Credits()
+    {
+        mainMenu.SetActive(false);
+        credits.SetActive(true);
+    }
+
     public void BackMenu()
     {
-        mainMenu.SetActive(true);
-        levels.SetActive(false);
+        if (levels.activeSelf)
+        {
+            mainMenu.SetActive(true);
+            levels.SetActive(false);
+        }
+        if (credits.activeSelf)
+        {
+            mainMenu.SetActive(true);
+            credits.SetActive(false);
+        }
     }
 
     public void Exit()
